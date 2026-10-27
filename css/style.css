@@ -1,0 +1,378 @@
+body {
+    background-color: #030305;
+    color: #F8FAFC;
+    overflow-x: hidden;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #030305;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #201018;
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #FF2A4D;
+}
+
+/* Glassmorphism Cards */
+.laxa-glass {
+    background: rgba(12, 12, 18, 0.7);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+.laxa-glass-red {
+    background: rgba(20, 8, 14, 0.65);
+    backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 42, 77, 0.25);
+    box-shadow: 0 8px 32px 0 rgba(255, 42, 77, 0.15);
+}
+
+.laxa-glass-red:hover {
+    border-color: rgba(255, 42, 77, 0.6);
+    box-shadow: 0 12px 40px 0 rgba(255, 42, 77, 0.35);
+}
+
+/* Glowing Red Text Gradient */
+.text-glow-red {
+    background: linear-gradient(135deg, #FFFFFF 30%, #FF6B8B 70%, #FF0033 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.text-glow-crimson {
+    background: linear-gradient(135deg, #FF6B8B 0%, #FF2A4D 50%, #B30024 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* Ambient Glow Highlights */
+.glow-bg-red {
+    position: absolute;
+    background: radial-gradient(circle, rgba(255, 42, 77, 0.18) 0%, rgba(180, 0, 40, 0.05) 50%, transparent 75%);
+    pointer-events: none;
+}
+
+/* Grid Background Pattern */
+.bg-grid-pattern {
+    background-image: radial-gradient(rgba(255, 42, 77, 0.12) 1px, transparent 1px);
+    background-size: 32px 32px;
+}
+
+/* Orbit Node Glow animation */
+.node-pulse {
+    box-shadow: 0 0 15px #FF2A4D, inset 0 0 10px #FF0033;
+}
+
+html {
+    scroll-behavior: smooth
+}
+
+section {
+    scroll-margin-top: 84px
+}
+
+.reveal {
+    opacity: 0;
+    transform: translateY(28px);
+    transition: opacity .8s ease, transform .8s ease
+}
+
+.reveal.in {
+    opacity: 1;
+    transform: none
+}
+
+#voice-panel:not(.hidden) {
+    display: flex
+}
+
+.mic-live {
+    animation: pulseGlow 1s infinite
+}
+
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(26px)
+    }
+
+    to {
+        opacity: 1;
+        transform: none
+    }
+}
+
+@keyframes shine {
+    0% {
+        background-position: 0% 50%
+    }
+
+    50% {
+        background-position: 100% 50%
+    }
+
+    100% {
+        background-position: 0% 50%
+    }
+}
+
+@keyframes marquee {
+    to {
+        transform: translateX(-50%)
+    }
+}
+
+@keyframes dashflow {
+    to {
+        stroke-dashoffset: -20
+    }
+}
+
+@keyframes drift {
+
+    0%,
+    100% {
+        transform: translate(0, 0)
+    }
+
+    50% {
+        transform: translate(40px, 30px)
+    }
+}
+
+body:not(.ready) #hero>* {
+    opacity: 0
+}
+
+body.ready #hero>* {
+    animation: fadeUp .9s cubic-bezier(.2, .7, .2, 1) both
+}
+
+#hero>*:nth-child(2) {
+    animation-delay: .15s
+}
+
+#hero>*:nth-child(3) {
+    animation-delay: .3s
+}
+
+#hero>*:nth-child(4) {
+    animation-delay: .45s
+}
+
+#hero>*:nth-child(5) {
+    animation-delay: .6s
+}
+
+.text-glow-crimson {
+    background-size: 200% auto;
+    animation: shine 5s ease-in-out infinite
+}
+
+.glow-bg-red {
+    animation: drift 14s ease-in-out infinite
+}
+
+.marquee {
+    animation: marquee 40s linear infinite
+}
+
+.marquee:hover {
+    animation-play-state: paused
+}
+
+.flow-line path {
+    animation: dashflow 1.2s linear infinite
+}
+
+.svg-label {
+    fill: #F8FAFC
+}
+
+.reveal.in .grid>* {
+    animation: fadeUp .7s both
+}
+
+.reveal.in .grid>*:nth-child(2) {
+    animation-delay: .08s
+}
+
+.reveal.in .grid>*:nth-child(3) {
+    animation-delay: .16s
+}
+
+.reveal.in .grid>*:nth-child(4) {
+    animation-delay: .24s
+}
+
+.reveal.in .grid>*:nth-child(5) {
+    animation-delay: .32s
+}
+
+.reveal.in .grid>*:nth-child(n+6) {
+    animation-delay: .4s
+}
+
+details>summary {
+    list-style: none
+}
+
+details>summary::-webkit-details-marker {
+    display: none
+}
+
+details summary i {
+    transition: transform .3s
+}
+
+details[open] summary i {
+    transform: rotate(45deg)
+}
+
+#intro-bar {
+    transition: width 2.4s ease
+}
+
+@media(prefers-reduced-motion:reduce) {
+    * {
+        animation-duration: .01ms !important;
+        animation-iteration-count: 1 !important
+    }
+}
+
+/* ===== LIGHT MODE ===== */
+html.light body {
+    background: #F6F4F7;
+    color: #14141C
+}
+
+html.light ::-webkit-scrollbar-track {
+    background: #F6F4F7
+}
+
+html.light .text-white {
+    color: #0F0F18
+}
+
+html.light .text-slate-100,
+html.light .text-slate-200 {
+    color: #1E1E2A
+}
+
+html.light .text-slate-300 {
+    color: #33333F
+}
+
+html.light .text-slate-400 {
+    color: #4B4B5A
+}
+
+html.light .text-slate-500,
+html.light .text-slate-600 {
+    color: #6B6B7A
+}
+
+html.light .text-amber-300,
+html.light .text-amber-400 {
+    color: #B45309
+}
+
+html.light .text-cyan-300 {
+    color: #0E7490
+}
+
+html.light .text-violet-300 {
+    color: #6D28D9
+}
+
+html.light .text-blue-400 {
+    color: #1D4ED8
+}
+
+html.light .text-emerald-400 {
+    color: #047857
+}
+
+html.light .svg-label {
+    fill: #14141C
+}
+
+html.light .laxa-glass {
+    background: rgba(255, 255, 255, .8);
+    border-color: rgba(20, 20, 40, .1);
+    box-shadow: 0 4px 20px rgba(20, 20, 40, .06)
+}
+
+html.light .laxa-glass-red {
+    background: rgba(255, 255, 255, .9);
+    border-color: rgba(255, 42, 77, .3);
+    box-shadow: 0 8px 28px rgba(255, 42, 77, .12)
+}
+
+html.light [class*="border-white"] {
+    border-color: rgba(20, 20, 40, .12)
+}
+
+html.light [class*="border-slate-800"] {
+    border-color: rgba(20, 20, 40, .15)
+}
+
+html.light .bg-white\/10,
+html.light .bg-white\/5 {
+    background: rgba(20, 20, 40, .06)
+}
+
+html.light [class*="hover:bg-white"]:hover {
+    background: rgba(20, 20, 40, .07)
+}
+
+html.light .bg-black\/40,
+html.light .bg-slate-900,
+html.light .bg-laxa-dark\/80 {
+    background: rgba(255, 255, 255, .95)
+}
+
+html.light .bg-slate-800 {
+    background: #E2DEE6
+}
+
+html.light #log-modal,
+html.light #legal-modal {
+    background: rgba(235, 233, 240, .85)
+}
+
+html.light .bg-grid-pattern {
+    opacity: .2
+}
+
+html.light .glow-bg-red {
+    opacity: .45
+}
+
+html.light .text-glow-red {
+    background-image: linear-gradient(135deg, #14141C 30%, #FF2A4D 100%);
+    -webkit-background-clip: text
+}
+
+html.light .bg-laxa-red,
+html.light .bg-laxa-redBright,
+html.light [class*="from-laxa-red"],
+html.light .wa-fab {
+    color: #fff
+}
+
+html.light .bg-laxa-red *,
+html.light [class*="from-laxa-red"] * {
+    color: #fff
+}

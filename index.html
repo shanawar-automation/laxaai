@@ -1,0 +1,2922 @@
+<!doctype html>
+<html lang="en" class="dark">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<script>
+			try {
+				if (localStorage.getItem("laxa-theme") === "light")
+					document.documentElement.className = "light";
+			} catch (e) {}
+		</script>
+		<title>LAXA - AI Automation Engine & Agency</title>
+
+		<!-- Tailwind CSS -->
+		<script src="https://cdn.tailwindcss.com"></script>
+
+		<!-- Google Fonts -->
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap"
+			rel="stylesheet" />
+
+		<!-- FontAwesome Icons -->
+		<link
+			rel="stylesheet"
+			href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
+		<!-- Three.js for 3D AI Globe Engine -->
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+
+		<script src="js/tailwind-config.js"></script>
+
+		<link rel="stylesheet" href="css/style.css" />
+	</head>
+	<body
+		class="relative min-h-screen bg-laxa-black text-slate-100 antialiased selection:bg-laxa-red selection:text-white">
+		<div
+			id="scroll-bar"
+			class="fixed top-0 left-0 h-[3px] w-0 bg-gradient-to-r from-laxa-red to-laxa-redBright z-[60]"></div>
+		<svg width="0" height="0" style="position: absolute" aria-hidden="true">
+			<symbol id="laxa-logo" viewBox="0 0 200 200">
+				<defs>
+					<clipPath id="lgClip"><circle cx="100" cy="100" r="62" /></clipPath>
+				</defs>
+				<circle
+					cx="100"
+					cy="100"
+					r="95"
+					fill="none"
+					stroke="#FF2A4D"
+					stroke-opacity=".55"
+					stroke-width="1.2"
+					stroke-dasharray="2 8">
+					<animateTransform
+						attributeName="transform"
+						type="rotate"
+						from="0 100 100"
+						to="360 100 100"
+						dur="24s"
+						repeatCount="indefinite" />
+				</circle>
+				<circle
+					cx="100"
+					cy="100"
+					r="82"
+					fill="none"
+					stroke="#E8B64C"
+					stroke-opacity=".6"
+					stroke-width="1"
+					stroke-dasharray="30 10 4 10">
+					<animateTransform
+						attributeName="transform"
+						type="rotate"
+						from="360 100 100"
+						to="0 100 100"
+						dur="16s"
+						repeatCount="indefinite" />
+				</circle>
+				<g>
+					<g>
+						<rect
+							x="95"
+							y="13"
+							width="10"
+							height="10"
+							rx="3"
+							fill="#0B0B12"
+							stroke="#E8B64C"
+							stroke-width="1.5">
+							<animate
+								attributeName="opacity"
+								values=".45;1;.45"
+								dur="2s"
+								begin="0s"
+								repeatCount="indefinite" />
+						</rect>
+						<line
+							x1="100"
+							y1="18"
+							x2="100"
+							y2="36"
+							stroke="#FF2A4D"
+							stroke-width="1.5">
+							<animate
+								attributeName="stroke-opacity"
+								values=".2;1;.2"
+								dur="2s"
+								begin="0s"
+								repeatCount="indefinite" />
+						</line>
+					</g>
+					<g>
+						<rect
+							x="177"
+							y="95"
+							width="10"
+							height="10"
+							rx="3"
+							fill="#0B0B12"
+							stroke="#E8B64C"
+							stroke-width="1.5">
+							<animate
+								attributeName="opacity"
+								values=".45;1;.45"
+								dur="2s"
+								begin="0.5s"
+								repeatCount="indefinite" />
+						</rect>
+						<line
+							x1="182"
+							y1="100"
+							x2="164"
+							y2="100"
+							stroke="#FF2A4D"
+							stroke-width="1.5">
+							<animate
+								attributeName="stroke-opacity"
+								values=".2;1;.2"
+								dur="2s"
+								begin="0.5s"
+								repeatCount="indefinite" />
+						</line>
+					</g>
+					<g>
+						<rect
+							x="95"
+							y="177"
+							width="10"
+							height="10"
+							rx="3"
+							fill="#0B0B12"
+							stroke="#E8B64C"
+							stroke-width="1.5">
+							<animate
+								attributeName="opacity"
+								values=".45;1;.45"
+								dur="2s"
+								begin="1s"
+								repeatCount="indefinite" />
+						</rect>
+						<line
+							x1="100"
+							y1="182"
+							x2="100"
+							y2="164"
+							stroke="#FF2A4D"
+							stroke-width="1.5">
+							<animate
+								attributeName="stroke-opacity"
+								values=".2;1;.2"
+								dur="2s"
+								begin="1s"
+								repeatCount="indefinite" />
+						</line>
+					</g>
+					<g>
+						<rect
+							x="13"
+							y="95"
+							width="10"
+							height="10"
+							rx="3"
+							fill="#0B0B12"
+							stroke="#E8B64C"
+							stroke-width="1.5">
+							<animate
+								attributeName="opacity"
+								values=".45;1;.45"
+								dur="2s"
+								begin="1.5s"
+								repeatCount="indefinite" />
+						</rect>
+						<line
+							x1="18"
+							y1="100"
+							x2="36"
+							y2="100"
+							stroke="#FF2A4D"
+							stroke-width="1.5">
+							<animate
+								attributeName="stroke-opacity"
+								values=".2;1;.2"
+								dur="2s"
+								begin="1.5s"
+								repeatCount="indefinite" />
+						</line>
+					</g>
+					<animateTransform
+						attributeName="transform"
+						type="rotate"
+						from="0 100 100"
+						to="360 100 100"
+						dur="36s"
+						repeatCount="indefinite" />
+				</g>
+				<image
+					href="assets/logo.jpeg"
+					x="-2.2"
+					y="6.1"
+					width="195.6"
+					height="203.9"
+					clip-path="url(#lgClip)" />
+				<circle
+					cx="100"
+					cy="100"
+					r="62"
+					fill="none"
+					stroke="#F29B9B"
+					stroke-opacity=".7"
+					stroke-width="1.2">
+					<animate
+						attributeName="stroke-opacity"
+						values=".3;.9;.3"
+						dur="3s"
+						repeatCount="indefinite" />
+				</circle>
+				<g>
+					<circle cx="100" cy="6" r="6" fill="#E8B64C" />
+					<animateTransform
+						attributeName="transform"
+						type="rotate"
+						from="0 100 100"
+						to="360 100 100"
+						dur="9s"
+						repeatCount="indefinite" />
+				</g>
+				<g>
+					<circle cx="194" cy="100" r="5" fill="#FF2A4D" />
+					<animateTransform
+						attributeName="transform"
+						type="rotate"
+						from="360 100 100"
+						to="0 100 100"
+						dur="13s"
+						repeatCount="indefinite" />
+				</g>
+				<g>
+					<circle cx="100" cy="194" r="4.5" fill="#F29B9B" />
+					<animateTransform
+						attributeName="transform"
+						type="rotate"
+						from="0 100 100"
+						to="360 100 100"
+						dur="11s"
+						repeatCount="indefinite" />
+				</g>
+			</symbol>
+		</svg>
+		<div
+			id="intro"
+			style="
+				position: fixed;
+				inset: 0;
+				z-index: 100;
+				background: #030305;
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+				justify-content: center;
+				transition: opacity 0.7s;
+			">
+			<div class="w-52 h-52">
+				<svg
+					viewBox="0 0 200 200"
+					class="w-full h-full"
+					aria-label="LAXA AI logo">
+					<use href="#laxa-logo" width="200" height="200" />
+				</svg>
+			</div>
+			<div
+				style="
+					color: #fff;
+					font-family: &quot;Space Grotesk&quot;, sans-serif;
+					font-weight: 800;
+					font-size: 30px;
+					letter-spacing: 0.3em;
+					margin-top: 8px;
+				">
+				LAXA AI
+			</div>
+			<div
+				id="intro-text"
+				style="
+					color: #ff2a4d;
+					font-family: &quot;JetBrains Mono&quot;, monospace;
+					font-size: 12px;
+					margin-top: 12px;
+				">
+				Booting agents...
+			</div>
+			<div
+				style="
+					width: 220px;
+					height: 4px;
+					background: rgba(255, 255, 255, 0.1);
+					border-radius: 4px;
+					margin-top: 20px;
+					overflow: hidden;
+				">
+				<div
+					id="intro-bar"
+					style="
+						height: 100%;
+						width: 0;
+						background: linear-gradient(90deg, #ff2a4d, #e8b64c);
+					"></div>
+			</div>
+		</div>
+		<!-- Radial Glow Canvas Background -->
+		<div
+			class="fixed inset-0 bg-grid-pattern opacity-40 z-0 pointer-events-none"></div>
+		<div
+			class="glow-bg-red top-[-10%] left-[20%] w-[600px] h-[600px] rounded-full blur-3xl z-0"></div>
+		<div
+			class="glow-bg-red top-[40%] right-[-10%] w-[500px] h-[500px] rounded-full blur-3xl z-0"></div>
+
+		<!-- STICKY GLASS HEADER -->
+		<header
+			class="sticky top-0 z-50 w-full laxa-glass border-b border-white/5 py-4 px-6 transition-all duration-300">
+			<div
+				class="max-w-[1600px] mx-auto flex items-center justify-between gap-4">
+				<a href="#hero" class="flex items-center gap-2.5 group shrink-0"
+					><svg
+						viewBox="0 0 200 200"
+						class="w-12 h-12"
+						aria-label="LAXA AI logo">
+						<use href="#laxa-logo" width="200" height="200" /></svg
+					><span
+						class="font-heading font-extrabold text-2xl tracking-wider text-white whitespace-nowrap"
+						>LAXA AI<span
+							class="text-laxa-red text-xs ml-1 font-mono px-1.5 py-0.5 rounded"></span></span
+				></a>
+
+				<!-- Navigation Links -->
+				<nav
+					class="hidden xl:flex items-center gap-6 text-[13px] font-medium text-slate-300 whitespace-nowrap">
+					<a href="#hero" class="nav-link hover:text-laxa-red transition-colors"
+						>Home</a
+					><a
+						href="#services"
+						class="nav-link hover:text-laxa-red transition-colors"
+						>Services</a
+					><a
+						href="#workflows"
+						class="nav-link hover:text-laxa-red transition-colors"
+						>Workflows</a
+					><a
+						href="#multi-agent"
+						class="nav-link hover:text-laxa-red transition-colors"
+						>AI Stack</a
+					><a
+						href="#templates"
+						class="nav-link hover:text-laxa-red transition-colors"
+						>Templates</a
+					><a
+						href="#marketplace"
+						class="nav-link hover:text-laxa-red transition-colors"
+						>Marketplace</a
+					><a
+						href="#pricing"
+						class="nav-link hover:text-laxa-red transition-colors"
+						>Pricing</a
+					><a
+						href="#security"
+						class="nav-link hover:text-laxa-red transition-colors"
+						>Security</a
+					><a
+						href="#contact"
+						class="nav-link hover:text-laxa-red transition-colors"
+						>Contact</a
+					>
+				</nav>
+
+				<!-- CTA & Actions -->
+				<div class="flex items-center gap-4">
+					<button
+						onclick="toggleAgentLogModal()"
+						class="hidden 2xl:flex items-center gap-2 text-xs font-mono px-3 py-2 rounded-lg bg-slate-900 border border-slate-800 text-slate-300 hover:border-laxa-red/50 transition-all">
+						<span
+							class="w-2 h-2 rounded-full bg-emerald-500 animate-ping"></span>
+						<span>ENGINE LOGS</span>
+					</button>
+					<button
+						id="theme-btn"
+						onclick="toggleTheme()"
+						aria-label="Toggle theme"
+						class="w-10 h-10 rounded-xl laxa-glass border border-white/10 text-white hover:text-laxa-red transition-colors">
+						<i class="fa-solid fa-moon"></i>
+					</button>
+					<button
+						onclick="toggleMenu()"
+						aria-label="Menu"
+						class="xl:hidden w-10 h-10 rounded-xl laxa-glass border border-white/10 text-white">
+						<i class="fa-solid fa-bars"></i>
+					</button>
+					<a
+						href="#contact"
+						class="relative group overflow-hidden rounded-xl px-5 py-2.5 text-sm font-bold text-white bg-gradient-to-r from-laxa-red to-laxa-redBright shadow-[0_0_20px_rgba(255,42,77,0.4)] hover:shadow-[0_0_30px_rgba(255,42,77,0.7)] transition-all">
+						<span class="relative z-10 flex items-center gap-2">
+							Get Started
+							<i
+								class="fa-solid fa-arrow-right text-xs transition-transform group-hover:translate-x-1"></i>
+						</span>
+					</a>
+				</div>
+			</div>
+		</header>
+		<div
+			id="mobile-menu"
+			class="hidden fixed top-[72px] inset-x-3 z-40 laxa-glass-red rounded-2xl p-4 xl:hidden max-h-[75vh] overflow-y-auto">
+			<div class="grid grid-cols-2 gap-2">
+				<a
+					href="#hero"
+					onclick="toggleMenu()"
+					class="px-3 py-2 rounded-xl text-sm text-slate-200 hover:bg-white/10"
+					>Home</a
+				><a
+					href="#control-center"
+					onclick="toggleMenu()"
+					class="px-3 py-2 rounded-xl text-sm text-slate-200 hover:bg-white/10"
+					>Agent Engine</a
+				><a
+					href="#services"
+					onclick="toggleMenu()"
+					class="px-3 py-2 rounded-xl text-sm text-slate-200 hover:bg-white/10"
+					>Services</a
+				><a
+					href="#workflows"
+					onclick="toggleMenu()"
+					class="px-3 py-2 rounded-xl text-sm text-slate-200 hover:bg-white/10"
+					>Workflows</a
+				><a
+					href="#multi-agent"
+					onclick="toggleMenu()"
+					class="px-3 py-2 rounded-xl text-sm text-slate-200 hover:bg-white/10"
+					>AI Stack</a
+				><a
+					href="#templates"
+					onclick="toggleMenu()"
+					class="px-3 py-2 rounded-xl text-sm text-slate-200 hover:bg-white/10"
+					>Templates</a
+				><a
+					href="#marketplace"
+					onclick="toggleMenu()"
+					class="px-3 py-2 rounded-xl text-sm text-slate-200 hover:bg-white/10"
+					>Marketplace</a
+				><a
+					href="#calculator"
+					onclick="toggleMenu()"
+					class="px-3 py-2 rounded-xl text-sm text-slate-200 hover:bg-white/10"
+					>ROI Calculator</a
+				><a
+					href="#pricing"
+					onclick="toggleMenu()"
+					class="px-3 py-2 rounded-xl text-sm text-slate-200 hover:bg-white/10"
+					>Pricing</a
+				><a
+					href="#security"
+					onclick="toggleMenu()"
+					class="px-3 py-2 rounded-xl text-sm text-slate-200 hover:bg-white/10"
+					>Security</a
+				><a
+					href="#faq"
+					onclick="toggleMenu()"
+					class="px-3 py-2 rounded-xl text-sm text-slate-200 hover:bg-white/10"
+					>FAQ</a
+				><a
+					href="#contact"
+					onclick="toggleMenu()"
+					class="px-3 py-2 rounded-xl text-sm text-slate-200 hover:bg-white/10"
+					>Contact</a
+				>
+			</div>
+		</div>
+
+		<!-- HERO SECTION -->
+		<section
+			id="hero"
+			class="relative z-10 min-h-[92vh] flex flex-col items-center justify-between pt-8 pb-12 px-4 max-w-7xl mx-auto">
+			<!-- Top Badge -->
+			<div
+				class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full laxa-glass border border-laxa-red/30 mb-4 shadow-[0_0_15px_rgba(255,42,77,0.2)]">
+				<span class="w-2 h-2 rounded-full bg-laxa-red animate-pulse"></span>
+				<span class="text-xs font-mono uppercase tracking-widest text-slate-200"
+					>AI-Powered Enterprise Automation</span
+				>
+			</div>
+
+			<!-- Main Headline & Subtitle -->
+			<div class="text-center max-w-4xl mx-auto mb-4">
+				<h1
+					class="text-4xl sm:text-6xl md:text-7xl font-extrabold font-heading tracking-tight leading-tight text-white">
+					Build the Future with <br class="hidden sm:block" />
+					<span
+						class="text-glow-crimson drop-shadow-[0_0_25px_rgba(255,42,77,0.6)]"
+						>Artificial Intelligence Solutions</span
+					>
+				</h1>
+				<p class="mt-4 text-base sm:text-lg text-slate-400 max-w-2xl mx-auto">
+					LAXA AI empowers businesses with cutting-edge AI solutions and
+					intelligent automation to simplify complex workflows. LAXA AI
+					businesses boost productivity, save time, and unlock new opportunities
+					through smart technology.
+					<!-- LAXA orchestrates hyper-intelligent AI agents working concurrently
+					24/7 to automate workflows, synthesize intelligence, and accelerate
+					revenue. -->
+				</p>
+			</div>
+
+			<!-- CTA Buttons Above Globe -->
+			<div class="flex items-center gap-4 mb-6">
+				<a
+					href="#control-center"
+					class="px-7 py-3 rounded-xl bg-laxa-red hover:bg-laxa-redBright text-white font-bold text-sm shadow-[0_0_25px_rgba(255,42,77,0.6)] transition-all flex items-center gap-2">
+					Deploy Agent Engine <i class="fa-solid fa-bolt"></i>
+				</a>
+				<a
+					href="#workflows"
+					class="px-7 py-3 rounded-xl laxa-glass hover:bg-white/10 text-slate-200 font-semibold text-sm border border-white/10 transition-all flex items-center gap-2">
+					Explore Workflows <i class="fa-solid fa-layer-group"></i>
+				</a>
+			</div>
+
+			<!-- CENTRAL 3D GLOBE AGENT ENGINE CONTAINER -->
+			<div
+				class="relative w-full max-w-6xl my-4 h-[440px] sm:h-[520px] rounded-3xl overflow-hidden flex items-center justify-center">
+				<!-- Three.js Canvas Container -->
+				<div
+					id="canvas-container"
+					class="absolute inset-0 z-0 flex items-center justify-center"></div>
+
+				<!-- Floating Translucent Glass Feature Cards Around Globe (Matching Reference Layout) -->
+				<div
+					class="absolute inset-0 z-10 pointer-events-none hidden md:flex justify-between items-center px-2 sm:px-8">
+					<!-- Left Stacked Cards -->
+					<div class="flex flex-col gap-6 w-52 sm:w-64 pointer-events-auto">
+						<!-- AI Models Card -->
+						<div
+							class="laxa-glass-red p-4 rounded-2xl animate-float"
+							style="animation-delay: 0s">
+							<div
+								class="w-9 h-9 rounded-xl bg-laxa-red/20 border border-laxa-red/40 flex items-center justify-center mb-3 text-laxa-red">
+								<i class="fa-solid fa-brain"></i>
+							</div>
+							<h3 class="font-heading font-bold text-sm text-white">
+								AI Models Hub
+							</h3>
+							<p class="text-xs text-slate-400 mt-1">
+								Access fine-tuned GPT-4o, Claude 3.5 & Custom Neural Nets in 1
+								engine.
+							</p>
+							<div
+								class="mt-3 flex items-center justify-between text-[11px] text-laxa-red font-mono">
+								<span class="flex items-center gap-1"
+									><i
+										class="fa-solid fa-circle text-[7px] text-emerald-400 animate-ping"></i>
+									ACTIVE</span
+								>
+								<i class="fa-solid fa-circle-chevron-right"></i>
+							</div>
+						</div>
+
+						<!-- Automation Card -->
+						<div
+							class="laxa-glass-red p-4 rounded-2xl animate-float"
+							style="animation-delay: 1.5s">
+							<div
+								class="w-9 h-9 rounded-xl bg-laxa-red/20 border border-laxa-red/40 flex items-center justify-center mb-3 text-laxa-red">
+								<i class="fa-solid fa-robot"></i>
+							</div>
+							<h3 class="font-heading font-bold text-sm text-white">
+								Autonomous Agents
+							</h3>
+							<p class="text-xs text-slate-400 mt-1">
+								Self-correcting worker nodes processing complex CRM & Voice
+								workflows live.
+							</p>
+							<div
+								class="mt-3 flex items-center justify-between text-[11px] text-laxa-red font-mono">
+								<span>6 ACTIVE AGENTS</span>
+								<i class="fa-solid fa-circle-chevron-right"></i>
+							</div>
+						</div>
+					</div>
+
+					<!-- Right Stacked Cards -->
+					<div class="flex flex-col gap-6 w-52 sm:w-64 pointer-events-auto">
+						<!-- Analytics Card -->
+						<div
+							class="laxa-glass-red p-4 rounded-2xl animate-float"
+							style="animation-delay: 0.8s">
+							<div
+								class="w-9 h-9 rounded-xl bg-laxa-red/20 border border-laxa-red/40 flex items-center justify-center mb-3 text-laxa-red">
+								<i class="fa-solid fa-chart-line"></i>
+							</div>
+							<h3 class="font-heading font-bold text-sm text-white">
+								Real-Time Analytics
+							</h3>
+							<p class="text-xs text-slate-400 mt-1">
+								Gain high-precision actionable insight from high-speed streaming
+								data.
+							</p>
+							<div
+								class="mt-3 flex items-center justify-between text-[11px] text-laxa-red font-mono">
+								<span>99.98% ACCURACY</span>
+								<i class="fa-solid fa-circle-chevron-right"></i>
+							</div>
+						</div>
+
+						<!-- Integrations Card -->
+						<div
+							class="laxa-glass-red p-4 rounded-2xl animate-float"
+							style="animation-delay: 2.2s">
+							<div
+								class="w-9 h-9 rounded-xl bg-laxa-red/20 border border-laxa-red/40 flex items-center justify-center mb-3 text-laxa-red">
+								<i class="fa-solid fa-plug"></i>
+							</div>
+							<h3 class="font-heading font-bold text-sm text-white">
+								Instant Integrations
+							</h3>
+							<p class="text-xs text-slate-400 mt-1">
+								Seamlessly connect with 500+ SaaS tools, APIs, and enterprise
+								databases.
+							</p>
+							<div
+								class="mt-3 flex items-center justify-between text-[11px] text-laxa-red font-mono">
+								<span>50+ PRE-BUILT</span>
+								<i class="fa-solid fa-circle-chevron-right"></i>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<!-- Globe Engine Overlay Details -->
+				<div
+					class="absolute top-4 left-1/2 -translate-x-1/2 z-20 pointer-events-none text-center">
+					<span
+						class="inline-block text-[10px] font-mono tracking-widest text-laxa-red uppercase bg-laxa-red/10 border border-laxa-red/30 px-3 py-1 rounded-full">
+						<i class="fa-solid fa-microchip mr-1"></i> LAXA CORE AGENT ENGINE :
+						ONLINE
+					</span>
+				</div>
+			</div>
+
+			<!-- Trust Stats Bar (Matching Bottom Bar in Reference Image) -->
+			<div
+				class="w-full max-w-5xl mt-4 laxa-glass rounded-2xl border border-white/10 p-4 flex flex-wrap items-center justify-between gap-6 shadow-[0_10px_30px_rgba(0,0,0,0.8)]">
+				<div class="flex items-center gap-3">
+					<div class="flex -space-x-2 overflow-hidden">
+						<img
+							class="inline-block h-8 w-8 rounded-full ring-2 ring-laxa-black"
+							src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100&auto=format&fit=crop&q=80"
+							alt="Avatar" />
+						<img
+							class="inline-block h-8 w-8 rounded-full ring-2 ring-laxa-black"
+							src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&auto=format&fit=crop&q=80"
+							alt="Avatar" />
+						<img
+							class="inline-block h-8 w-8 rounded-full ring-2 ring-laxa-black"
+							src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&auto=format&fit=crop&q=80"
+							alt="Avatar" />
+						<img
+							class="inline-block h-8 w-8 rounded-full ring-2 ring-laxa-black"
+							src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100&auto=format&fit=crop&q=80"
+							alt="Avatar" />
+					</div>
+					<div>
+						<p class="text-xs font-bold text-white">Trusted by 50+ teams</p>
+						<p class="text-[10px] text-slate-400">Worldwide deployment</p>
+					</div>
+				</div>
+
+				<div class="h-8 w-[1px] bg-white/10 hidden sm:block"></div>
+
+				<div class="flex items-center gap-8">
+					<div>
+						<div
+							class="text-xl font-extrabold font-heading text-white flex items-center gap-1">
+							99.9%
+							<span
+								class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+						</div>
+						<div class="text-[10px] font-mono text-slate-400 uppercase">
+							Engine Uptime
+						</div>
+					</div>
+					<div>
+						<div class="text-xl font-extrabold font-heading text-laxa-red">
+							1K+
+						</div>
+						<div class="text-[10px] font-mono text-slate-400 uppercase">
+							Active Agents
+						</div>
+					</div>
+					<div>
+						<div class="text-xl font-extrabold font-heading text-white">
+							50+
+						</div>
+						<div class="text-[10px] font-mono text-slate-400 uppercase">
+							Integrations
+						</div>
+					</div>
+					<div>
+						<div class="text-xl font-extrabold font-heading text-laxa-red">
+							24/7
+						</div>
+						<div class="text-[10px] font-mono text-slate-400 uppercase">
+							Live Support
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+		<div class="relative z-10 border-y border-white/5 py-4 overflow-hidden">
+			<div class="marquee flex gap-3 w-max">
+				<span
+					class="px-4 py-1.5 rounded-full laxa-glass border border-white/10 text-xs font-mono text-slate-300 whitespace-nowrap"
+					><i class="fa-solid fa-circle text-[6px] text-laxa-red mr-2"></i>AI
+					Agents</span
+				><span
+					class="px-4 py-1.5 rounded-full laxa-glass border border-white/10 text-xs font-mono text-slate-300 whitespace-nowrap"
+					><i class="fa-solid fa-circle text-[6px] text-laxa-red mr-2"></i
+					>Chatbots</span
+				><span
+					class="px-4 py-1.5 rounded-full laxa-glass border border-white/10 text-xs font-mono text-slate-300 whitespace-nowrap"
+					><i class="fa-solid fa-circle text-[6px] text-laxa-red mr-2"></i>Voice
+					AI</span
+				><span
+					class="px-4 py-1.5 rounded-full laxa-glass border border-white/10 text-xs font-mono text-slate-300 whitespace-nowrap"
+					><i class="fa-solid fa-circle text-[6px] text-laxa-red mr-2"></i
+					>WhatsApp Bots</span
+				><span
+					class="px-4 py-1.5 rounded-full laxa-glass border border-white/10 text-xs font-mono text-slate-300 whitespace-nowrap"
+					><i class="fa-solid fa-circle text-[6px] text-laxa-red mr-2"></i>n8n
+					Workflows</span
+				><span
+					class="px-4 py-1.5 rounded-full laxa-glass border border-white/10 text-xs font-mono text-slate-300 whitespace-nowrap"
+					><i class="fa-solid fa-circle text-[6px] text-laxa-red mr-2"></i>RAG
+					Knowledge Bots</span
+				><span
+					class="px-4 py-1.5 rounded-full laxa-glass border border-white/10 text-xs font-mono text-slate-300 whitespace-nowrap"
+					><i class="fa-solid fa-circle text-[6px] text-laxa-red mr-2"></i>CRM
+					Automation</span
+				><span
+					class="px-4 py-1.5 rounded-full laxa-glass border border-white/10 text-xs font-mono text-slate-300 whitespace-nowrap"
+					><i class="fa-solid fa-circle text-[6px] text-laxa-red mr-2"></i>Lead
+					Generation</span
+				><span
+					class="px-4 py-1.5 rounded-full laxa-glass border border-white/10 text-xs font-mono text-slate-300 whitespace-nowrap"
+					><i class="fa-solid fa-circle text-[6px] text-laxa-red mr-2"></i
+					>Custom Integrations</span
+				><span
+					class="px-4 py-1.5 rounded-full laxa-glass border border-white/10 text-xs font-mono text-slate-300 whitespace-nowrap"
+					><i class="fa-solid fa-circle text-[6px] text-laxa-red mr-2"></i>Agent
+					Templates</span
+				><span
+					class="px-4 py-1.5 rounded-full laxa-glass border border-white/10 text-xs font-mono text-slate-300 whitespace-nowrap"
+					><i class="fa-solid fa-circle text-[6px] text-laxa-red mr-2"></i>AI
+					Agents</span
+				><span
+					class="px-4 py-1.5 rounded-full laxa-glass border border-white/10 text-xs font-mono text-slate-300 whitespace-nowrap"
+					><i class="fa-solid fa-circle text-[6px] text-laxa-red mr-2"></i
+					>Chatbots</span
+				><span
+					class="px-4 py-1.5 rounded-full laxa-glass border border-white/10 text-xs font-mono text-slate-300 whitespace-nowrap"
+					><i class="fa-solid fa-circle text-[6px] text-laxa-red mr-2"></i>Voice
+					AI</span
+				><span
+					class="px-4 py-1.5 rounded-full laxa-glass border border-white/10 text-xs font-mono text-slate-300 whitespace-nowrap"
+					><i class="fa-solid fa-circle text-[6px] text-laxa-red mr-2"></i
+					>WhatsApp Bots</span
+				><span
+					class="px-4 py-1.5 rounded-full laxa-glass border border-white/10 text-xs font-mono text-slate-300 whitespace-nowrap"
+					><i class="fa-solid fa-circle text-[6px] text-laxa-red mr-2"></i>n8n
+					Workflows</span
+				><span
+					class="px-4 py-1.5 rounded-full laxa-glass border border-white/10 text-xs font-mono text-slate-300 whitespace-nowrap"
+					><i class="fa-solid fa-circle text-[6px] text-laxa-red mr-2"></i>RAG
+					Knowledge Bots</span
+				><span
+					class="px-4 py-1.5 rounded-full laxa-glass border border-white/10 text-xs font-mono text-slate-300 whitespace-nowrap"
+					><i class="fa-solid fa-circle text-[6px] text-laxa-red mr-2"></i>CRM
+					Automation</span
+				><span
+					class="px-4 py-1.5 rounded-full laxa-glass border border-white/10 text-xs font-mono text-slate-300 whitespace-nowrap"
+					><i class="fa-solid fa-circle text-[6px] text-laxa-red mr-2"></i>Lead
+					Generation</span
+				><span
+					class="px-4 py-1.5 rounded-full laxa-glass border border-white/10 text-xs font-mono text-slate-300 whitespace-nowrap"
+					><i class="fa-solid fa-circle text-[6px] text-laxa-red mr-2"></i
+					>Custom Integrations</span
+				><span
+					class="px-4 py-1.5 rounded-full laxa-glass border border-white/10 text-xs font-mono text-slate-300 whitespace-nowrap"
+					><i class="fa-solid fa-circle text-[6px] text-laxa-red mr-2"></i>Agent
+					Templates</span
+				>
+			</div>
+		</div>
+
+		<!-- LIVE AI AGENT CONTROL CENTER & MONITORING DASHBOARD -->
+		<section
+			id="control-center"
+			class="py-20 px-4 max-w-7xl mx-auto border-t border-white/5 relative">
+			<div class="text-center max-w-3xl mx-auto mb-14">
+				<span class="text-xs font-mono uppercase tracking-widest text-laxa-red"
+					>Real-Time Execution</span
+				>
+				<h2
+					class="text-3xl sm:text-5xl font-extrabold font-heading text-white mt-2">
+					Live AI Control Center
+				</h2>
+				<p class="text-slate-400 mt-3">
+					Monitor agent streams, task execution speeds, CPU token loads, and
+					node metrics in real-time.
+				</p>
+			</div>
+
+			<div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+				<!-- Active Agents Table -->
+				<div
+					class="lg:col-span-2 laxa-glass rounded-2xl p-6 border border-white/10 shadow-2xl">
+					<div
+						class="flex items-center justify-between pb-4 border-b border-white/10">
+						<div class="flex items-center gap-3">
+							<div class="w-3 h-3 rounded-full bg-laxa-red animate-ping"></div>
+							<h3 class="font-heading font-bold text-lg text-white">
+								Active Worker Agents
+							</h3>
+						</div>
+						<span
+							class="text-xs font-mono px-3 py-1 rounded-md bg-laxa-red/10 border border-laxa-red/30 text-laxa-red">
+							<i class="fa-solid fa-server mr-1"></i> NODE CLUSTER: ONLINE
+						</span>
+					</div>
+
+					<div class="mt-6 overflow-x-auto">
+						<table class="w-full text-left text-sm">
+							<thead>
+								<tr
+									class="text-xs font-mono text-slate-400 border-b border-white/10">
+									<th class="pb-3">AGENT NAME</th>
+									<th class="pb-3">ROLE</th>
+									<th class="pb-3">STATUS</th>
+									<th class="pb-3">LATENCY</th>
+									<th class="pb-3">TASKS/MIN</th>
+								</tr>
+							</thead>
+							<tbody
+								class="divide-y divide-white/5 font-mono text-xs text-slate-300">
+								<tr class="hover:bg-white/5 transition-colors">
+									<td
+										class="py-3.5 flex items-center gap-2 font-semibold text-white">
+										<i class="fa-solid fa-user-check text-laxa-red"></i> Lead
+										Qualifier Pro
+									</td>
+									<td class="text-slate-400">Inbound Sales</td>
+									<td>
+										<span
+											class="px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-400 border border-emerald-500/30"
+											>EXECUTING</span
+										>
+									</td>
+									<td>14ms</td>
+									<td>420/m</td>
+								</tr>
+								<tr class="hover:bg-white/5 transition-colors">
+									<td
+										class="py-3.5 flex items-center gap-2 font-semibold text-white">
+										<i class="fa-solid fa-headset text-laxa-red"></i> Voice AI
+										Support
+									</td>
+									<td class="text-slate-400">Customer Success</td>
+									<td>
+										<span
+											class="px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-400 border border-emerald-500/30"
+											>ACTIVE</span
+										>
+									</td>
+									<td>28ms</td>
+									<td>180/m</td>
+								</tr>
+								<tr class="hover:bg-white/5 transition-colors">
+									<td
+										class="py-3.5 flex items-center gap-2 font-semibold text-white">
+										<i class="fa-solid fa-database text-laxa-red"></i> Data
+										Synthesizer
+									</td>
+									<td class="text-slate-400">ETL & CRM Sync</td>
+									<td>
+										<span
+											class="px-2 py-0.5 rounded bg-amber-500/10 text-amber-400 border border-amber-500/30"
+											>SYNCING</span
+										>
+									</td>
+									<td>8ms</td>
+									<td>1,240/m</td>
+								</tr>
+								<tr class="hover:bg-white/5 transition-colors">
+									<td
+										class="py-3.5 flex items-center gap-2 font-semibold text-white">
+										<i class="fa-solid fa-shield-halved text-laxa-red"></i>
+										Security Sentry
+									</td>
+									<td class="text-slate-400">Telemetry & Audit</td>
+									<td>
+										<span
+											class="px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-400 border border-emerald-500/30"
+											>MONITORING</span
+										>
+									</td>
+									<td>4ms</td>
+									<td>3,100/m</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+
+				<!-- Terminal Execution Stream -->
+				<div
+					class="laxa-glass rounded-2xl p-5 border border-white/10 flex flex-col justify-between">
+					<div>
+						<div
+							class="flex items-center justify-between pb-3 border-b border-white/10">
+							<span
+								class="text-xs font-mono text-slate-300 flex items-center gap-2">
+								<i class="fa-solid fa-terminal text-laxa-red"></i> LIVE LOG
+								STREAM
+							</span>
+							<div class="flex gap-1.5">
+								<span class="w-2.5 h-2.5 rounded-full bg-red-500/80"></span>
+								<span class="w-2.5 h-2.5 rounded-full bg-amber-500/80"></span>
+								<span class="w-2.5 h-2.5 rounded-full bg-emerald-500/80"></span>
+							</div>
+						</div>
+
+						<div
+							id="terminal-logs"
+							class="mt-4 font-mono text-[11px] space-y-2 h-64 overflow-y-auto text-slate-300 pr-2">
+							<!-- Dynamic Logs Generated via JS -->
+						</div>
+					</div>
+
+					<div
+						class="mt-4 pt-3 border-t border-white/10 flex items-center justify-between text-xs font-mono">
+						<span class="text-slate-400">Token Throughput:</span>
+						<span class="text-laxa-red font-bold animate-pulse"
+							>4,820 tokens/sec</span
+						>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<section
+			id="services"
+			class="py-20 px-4 max-w-7xl mx-auto border-t border-white/5 relative z-10">
+			<div class="mb-12">
+				<span class="text-xs font-mono uppercase tracking-widest text-laxa-red"
+					>What We Build</span
+				>
+				<h2
+					class="text-3xl sm:text-5xl font-extrabold font-heading text-white mt-2">
+					AI Agents, Bots & Automation
+				</h2>
+				<p class="text-slate-400 mt-3 max-w-2xl">
+					LAXA AI is an AI automation agency. We design, build and run the
+					agents that keep your business working 24/7.
+				</p>
+			</div>
+			<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+				<a
+					href="#multi-agent"
+					class="laxa-glass-red rounded-3xl p-6 block group hover:-translate-y-1 transition-all"
+					><div
+						class="w-12 h-12 rounded-2xl bg-laxa-red/20 border border-laxa-red/40 flex items-center justify-center text-laxa-red text-xl mb-4 group-hover:scale-110 transition-transform">
+						<i class="fa-solid fa-robot"></i>
+					</div>
+					<h3 class="text-lg font-bold font-heading text-white">AI Agents</h3>
+					<p class="text-xs text-slate-400 mt-2 leading-relaxed">
+						Autonomous agents that handle tasks end to end for your business.
+					</p>
+					<span class="inline-block mt-4 text-xs font-bold text-laxa-red"
+						>Learn more <i class="fa-solid fa-arrow-right ml-1"></i></span></a
+				><a
+					href="#contact"
+					class="laxa-glass-red rounded-3xl p-6 block group hover:-translate-y-1 transition-all"
+					><div
+						class="w-12 h-12 rounded-2xl bg-laxa-red/20 border border-laxa-red/40 flex items-center justify-center text-laxa-red text-xl mb-4 group-hover:scale-110 transition-transform">
+						<i class="fa-solid fa-comments"></i>
+					</div>
+					<h3 class="text-lg font-bold font-heading text-white">
+						Website & WhatsApp Chatbots
+					</h3>
+					<p class="text-xs text-slate-400 mt-2 leading-relaxed">
+						Bots that answer customers instantly on your site and WhatsApp.
+					</p>
+					<span class="inline-block mt-4 text-xs font-bold text-laxa-red"
+						>Learn more <i class="fa-solid fa-arrow-right ml-1"></i></span></a
+				><a
+					href="#marketplace"
+					class="laxa-glass-red rounded-3xl p-6 block group hover:-translate-y-1 transition-all"
+					><div
+						class="w-12 h-12 rounded-2xl bg-laxa-red/20 border border-laxa-red/40 flex items-center justify-center text-laxa-red text-xl mb-4 group-hover:scale-110 transition-transform">
+						<i class="fa-solid fa-microphone-lines"></i>
+					</div>
+					<h3 class="text-lg font-bold font-heading text-white">
+						Voice AI Agents
+					</h3>
+					<p class="text-xs text-slate-400 mt-2 leading-relaxed">
+						Agents that talk to customers by voice and hand over to humans.
+					</p>
+					<span class="inline-block mt-4 text-xs font-bold text-laxa-red"
+						>Learn more <i class="fa-solid fa-arrow-right ml-1"></i></span></a
+				><a
+					href="#workflows"
+					class="laxa-glass-red rounded-3xl p-6 block group hover:-translate-y-1 transition-all"
+					><div
+						class="w-12 h-12 rounded-2xl bg-laxa-red/20 border border-laxa-red/40 flex items-center justify-center text-laxa-red text-xl mb-4 group-hover:scale-110 transition-transform">
+						<i class="fa-solid fa-diagram-project"></i>
+					</div>
+					<h3 class="text-lg font-bold font-heading text-white">
+						Workflow Automation
+					</h3>
+					<p class="text-xs text-slate-400 mt-2 leading-relaxed">
+						n8n-based workflows connecting your apps and data.
+					</p>
+					<span class="inline-block mt-4 text-xs font-bold text-laxa-red"
+						>Learn more <i class="fa-solid fa-arrow-right ml-1"></i></span></a
+				><a
+					href="#rag-engine"
+					class="laxa-glass-red rounded-3xl p-6 block group hover:-translate-y-1 transition-all"
+					><div
+						class="w-12 h-12 rounded-2xl bg-laxa-red/20 border border-laxa-red/40 flex items-center justify-center text-laxa-red text-xl mb-4 group-hover:scale-110 transition-transform">
+						<i class="fa-solid fa-book-open"></i>
+					</div>
+					<h3 class="text-lg font-bold font-heading text-white">
+						RAG Knowledge Bots
+					</h3>
+					<p class="text-xs text-slate-400 mt-2 leading-relaxed">
+						Assistants that answer from your own documents with sources.
+					</p>
+					<span class="inline-block mt-4 text-xs font-bold text-laxa-red"
+						>Learn more <i class="fa-solid fa-arrow-right ml-1"></i></span></a
+				><a
+					href="#marketplace"
+					class="laxa-glass-red rounded-3xl p-6 block group hover:-translate-y-1 transition-all"
+					><div
+						class="w-12 h-12 rounded-2xl bg-laxa-red/20 border border-laxa-red/40 flex items-center justify-center text-laxa-red text-xl mb-4 group-hover:scale-110 transition-transform">
+						<i class="fa-solid fa-address-book"></i>
+					</div>
+					<h3 class="text-lg font-bold font-heading text-white">
+						CRM & Lead Automation
+					</h3>
+					<p class="text-xs text-slate-400 mt-2 leading-relaxed">
+						Capture, score and follow up leads automatically.
+					</p>
+					<span class="inline-block mt-4 text-xs font-bold text-laxa-red"
+						>Learn more <i class="fa-solid fa-arrow-right ml-1"></i></span></a
+				><a
+					href="#contact"
+					class="laxa-glass-red rounded-3xl p-6 block group hover:-translate-y-1 transition-all"
+					><div
+						class="w-12 h-12 rounded-2xl bg-laxa-red/20 border border-laxa-red/40 flex items-center justify-center text-laxa-red text-xl mb-4 group-hover:scale-110 transition-transform">
+						<i class="fa-solid fa-plug"></i>
+					</div>
+					<h3 class="text-lg font-bold font-heading text-white">
+						Custom Integrations
+					</h3>
+					<p class="text-xs text-slate-400 mt-2 leading-relaxed">
+						Connect AI to the tools and APIs you already use.
+					</p>
+					<span class="inline-block mt-4 text-xs font-bold text-laxa-red"
+						>Learn more <i class="fa-solid fa-arrow-right ml-1"></i></span></a
+				><a
+					href="#templates"
+					class="laxa-glass-red rounded-3xl p-6 block group hover:-translate-y-1 transition-all"
+					><div
+						class="w-12 h-12 rounded-2xl bg-laxa-red/20 border border-laxa-red/40 flex items-center justify-center text-laxa-red text-xl mb-4 group-hover:scale-110 transition-transform">
+						<i class="fa-solid fa-store"></i>
+					</div>
+					<h3 class="text-lg font-bold font-heading text-white">
+						Agent Templates
+					</h3>
+					<p class="text-xs text-slate-400 mt-2 leading-relaxed">
+						Ready-made agents you can buy and launch quickly.
+					</p>
+					<span class="inline-block mt-4 text-xs font-bold text-laxa-red"
+						>Learn more <i class="fa-solid fa-arrow-right ml-1"></i></span
+				></a>
+			</div>
+		</section>
+
+		<!-- INTERACTIVE VISUAL WORKFLOW BUILDER CANVAS -->
+		<section
+			id="workflows"
+			class="py-20 px-4 max-w-7xl mx-auto border-t border-white/5">
+			<div class="text-center max-w-3xl mx-auto mb-12">
+				<span class="text-xs font-mono uppercase tracking-widest text-laxa-red"
+					>No-Code Orchestration</span
+				>
+				<h2
+					class="text-3xl sm:text-5xl font-extrabold font-heading text-white mt-2">
+					Visual Agent Workflow Builder
+				</h2>
+				<p class="text-slate-400 mt-3">
+					Drag, connect, and configure autonomous worker nodes into
+					high-velocity business pipelines.
+				</p>
+			</div>
+
+			<div
+				class="laxa-glass rounded-3xl p-6 border border-white/10 relative overflow-hidden shadow-2xl">
+				<!-- Builder Header / Controls -->
+				<div
+					class="flex flex-wrap items-center justify-between gap-4 pb-6 border-b border-white/10">
+					<div class="flex items-center gap-2">
+						<span
+							class="text-xs font-mono text-slate-300 bg-white/5 border border-white/10 px-3 py-1.5 rounded-lg">
+							Workflow:
+							<span class="text-laxa-red font-semibold"
+								>Enterprise Lead Lead-to-Close Pipeline</span
+							>
+						</span>
+					</div>
+					<div class="flex items-center gap-3">
+						<button
+							onclick="runWorkflowSim()"
+							class="px-4 py-2 rounded-xl bg-laxa-red hover:bg-laxa-redBright text-white text-xs font-bold font-mono transition-all flex items-center gap-2 shadow-[0_0_15px_rgba(255,42,77,0.4)]">
+							<i class="fa-solid fa-play"></i> TEST SIMULATION
+						</button>
+						<button
+							onclick="resetWorkflowSim()"
+							class="px-4 py-2 rounded-xl bg-white/5 hover:bg-white/10 text-slate-300 text-xs font-mono border border-white/10 transition-all">
+							Reset Flow
+						</button>
+					</div>
+				</div>
+
+				<!-- Workflow Visual Canvas -->
+				<div
+					class="relative min-h-[380px] bg-laxa-dark/80 rounded-2xl my-6 border border-white/5 p-8 flex flex-wrap items-center justify-around gap-6 overflow-x-auto">
+					<!-- Node 1: Trigger -->
+					<div
+						class="w-56 laxa-glass-red rounded-2xl p-4 relative group cursor-pointer border border-laxa-red/40 hover:scale-105 transition-transform">
+						<div
+							class="text-[10px] font-mono text-laxa-red uppercase font-bold mb-1">
+							STEP 01 // TRIGGER
+						</div>
+						<div class="flex items-center gap-3">
+							<div
+								class="w-10 h-10 rounded-xl bg-laxa-red/20 text-laxa-red flex items-center justify-center font-bold">
+								<i class="fa-solid fa-envelope-open-text"></i>
+							</div>
+							<div>
+								<h4 class="text-sm font-bold text-white">Inbound Lead Email</h4>
+								<p class="text-[11px] text-slate-400">Webhook Trigger</p>
+							</div>
+						</div>
+					</div>
+
+					<!-- Arrow -->
+					<div class="text-laxa-red text-xl animate-pulse">
+						<i class="fa-solid fa-chevron-right"></i>
+					</div>
+
+					<!-- Node 2: AI Parser -->
+					<div
+						id="sim-node-2"
+						class="w-56 laxa-glass rounded-2xl p-4 relative group cursor-pointer border border-white/10 hover:border-laxa-red/50 transition-all">
+						<div
+							class="text-[10px] font-mono text-slate-400 uppercase font-bold mb-1">
+							STEP 02 // PARSER
+						</div>
+						<div class="flex items-center gap-3">
+							<div
+								class="w-10 h-10 rounded-xl bg-white/5 text-slate-300 flex items-center justify-center font-bold">
+								<i class="fa-solid fa-brain"></i>
+							</div>
+							<div>
+								<h4 class="text-sm font-bold text-white">
+									GPT-4 Intent Extraction
+								</h4>
+								<p class="text-[11px] text-slate-400">Entity & Intent</p>
+							</div>
+						</div>
+					</div>
+
+					<!-- Arrow -->
+					<div class="text-slate-600 text-xl">
+						<i class="fa-solid fa-chevron-right"></i>
+					</div>
+
+					<!-- Node 3: CRM Router -->
+					<div
+						id="sim-node-3"
+						class="w-56 laxa-glass rounded-2xl p-4 relative group cursor-pointer border border-white/10 hover:border-laxa-red/50 transition-all">
+						<div
+							class="text-[10px] font-mono text-slate-400 uppercase font-bold mb-1">
+							STEP 03 // ACTION
+						</div>
+						<div class="flex items-center gap-3">
+							<div
+								class="w-10 h-10 rounded-xl bg-white/5 text-slate-300 flex items-center justify-center font-bold">
+								<i class="fa-solid fa-address-book"></i>
+							</div>
+							<div>
+								<h4 class="text-sm font-bold text-white">HubSpot CRM Sync</h4>
+								<p class="text-[11px] text-slate-400">Auto Contact Creation</p>
+							</div>
+						</div>
+					</div>
+
+					<!-- Arrow -->
+					<div class="text-slate-600 text-xl">
+						<i class="fa-solid fa-chevron-right"></i>
+					</div>
+
+					<!-- Node 4: Voice Agent -->
+					<div
+						id="sim-node-4"
+						class="w-56 laxa-glass rounded-2xl p-4 relative group cursor-pointer border border-white/10 hover:border-laxa-red/50 transition-all">
+						<div
+							class="text-[10px] font-mono text-slate-400 uppercase font-bold mb-1">
+							STEP 04 // OUTREACH
+						</div>
+						<div class="flex items-center gap-3">
+							<div
+								class="w-10 h-10 rounded-xl bg-white/5 text-slate-300 flex items-center justify-center font-bold">
+								<i class="fa-solid fa-phone-volume"></i>
+							</div>
+							<div>
+								<h4 class="text-sm font-bold text-white">
+									AI Voice Call Dispatch
+								</h4>
+								<p class="text-[11px] text-slate-400">Sub-Second Dialing</p>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div
+					class="flex items-center justify-between text-xs text-slate-400 font-mono">
+					<span
+						><i class="fa-solid fa-shield-halved text-emerald-400 mr-1"></i>
+						End-to-End Encrypted Flow</span
+					>
+					<span id="sim-status">Status: Ready for simulation</span>
+				</div>
+			</div>
+		</section>
+
+		<section
+			id="multi-agent"
+			class="py-20 px-4 max-w-7xl mx-auto border-t border-white/5 relative z-10">
+			<div class="mb-12">
+				<span class="text-xs font-mono uppercase tracking-widest text-laxa-red"
+					>Multi-Agent Orchestration</span
+				>
+				<h2
+					class="text-3xl sm:text-5xl font-extrabold font-heading text-white mt-2">
+					Agents That Work as a Team
+				</h2>
+				<p class="text-slate-400 mt-3 max-w-2xl">
+					One goal is split between specialist agents. They plan, research, act
+					and review each other before anything reaches your systems.
+				</p>
+			</div>
+			<div class="grid grid-cols-1 lg:grid-cols-5 gap-6">
+				<div class="lg:col-span-2 space-y-3">
+					<button
+						id="role-btn-planner"
+						onclick="selectRole('planner')"
+						class="role-btn w-full text-left flex items-center gap-3 px-4 py-3 rounded-2xl laxa-glass border border-white/10 hover:border-laxa-red/50 transition-all">
+						<span
+							class="w-9 h-9 rounded-xl bg-laxa-red/20 text-laxa-red flex items-center justify-center"
+							><i class="fa-solid fa-sitemap"></i></span
+						><span class="font-heading font-bold text-sm text-white"
+							>Planner Agent</span
+						></button
+					><button
+						id="role-btn-researcher"
+						onclick="selectRole('researcher')"
+						class="role-btn w-full text-left flex items-center gap-3 px-4 py-3 rounded-2xl laxa-glass border border-white/10 hover:border-laxa-red/50 transition-all">
+						<span
+							class="w-9 h-9 rounded-xl bg-laxa-red/20 text-laxa-red flex items-center justify-center"
+							><i class="fa-solid fa-magnifying-glass-chart"></i></span
+						><span class="font-heading font-bold text-sm text-white"
+							>Researcher Agent</span
+						></button
+					><button
+						id="role-btn-executor"
+						onclick="selectRole('executor')"
+						class="role-btn w-full text-left flex items-center gap-3 px-4 py-3 rounded-2xl laxa-glass border border-white/10 hover:border-laxa-red/50 transition-all">
+						<span
+							class="w-9 h-9 rounded-xl bg-laxa-red/20 text-laxa-red flex items-center justify-center"
+							><i class="fa-solid fa-gears"></i></span
+						><span class="font-heading font-bold text-sm text-white"
+							>Executor Agent</span
+						></button
+					><button
+						id="role-btn-reviewer"
+						onclick="selectRole('reviewer')"
+						class="role-btn w-full text-left flex items-center gap-3 px-4 py-3 rounded-2xl laxa-glass border border-white/10 hover:border-laxa-red/50 transition-all">
+						<span
+							class="w-9 h-9 rounded-xl bg-laxa-red/20 text-laxa-red flex items-center justify-center"
+							><i class="fa-solid fa-user-check"></i></span
+						><span class="font-heading font-bold text-sm text-white"
+							>Reviewer Agent</span
+						>
+					</button>
+				</div>
+				<div
+					id="role-panel"
+					class="lg:col-span-3 laxa-glass-red rounded-3xl p-8 min-h-[280px]"></div>
+			</div>
+		</section>
+
+		<section
+			id="rag-engine"
+			class="py-20 px-4 max-w-7xl mx-auto border-t border-white/5 relative z-10">
+			<div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+				<div>
+					<span
+						class="text-xs font-mono uppercase tracking-widest text-laxa-red"
+						>RAG Knowledge Engine</span
+					>
+					<h2
+						class="text-3xl sm:text-5xl font-extrabold font-heading text-white mt-2">
+						Your Data, Answered with Sources
+					</h2>
+					<p class="text-slate-400 mt-3 max-w-2xl">
+						Give agents a private knowledge base so answers come from your
+						documents, not guesses.
+					</p>
+					<div class="mt-8 space-y-4">
+						<div
+							class="laxa-glass rounded-2xl p-5 border border-white/10 flex gap-4">
+							<span
+								class="w-10 h-10 shrink-0 rounded-xl bg-laxa-red/20 text-laxa-red flex items-center justify-center"
+								><i class="fa-solid fa-file-import"></i
+							></span>
+							<div>
+								<h3 class="font-heading font-bold text-white text-sm">
+									1. Ingest
+								</h3>
+								<p class="text-xs text-slate-400 mt-1 leading-relaxed">
+									Connect PDFs, docs, websites, tickets and databases. Content
+									is cleaned and split into chunks.
+								</p>
+							</div>
+						</div>
+						<div
+							class="laxa-glass rounded-2xl p-5 border border-white/10 flex gap-4">
+							<span
+								class="w-10 h-10 shrink-0 rounded-xl bg-laxa-red/20 text-laxa-red flex items-center justify-center"
+								><i class="fa-solid fa-cubes"></i
+							></span>
+							<div>
+								<h3 class="font-heading font-bold text-white text-sm">
+									2. Embed & Index
+								</h3>
+								<p class="text-xs text-slate-400 mt-1 leading-relaxed">
+									Chunks are converted to vectors and stored with permissions,
+									so each user only retrieves what they may see.
+								</p>
+							</div>
+						</div>
+						<div
+							class="laxa-glass rounded-2xl p-5 border border-white/10 flex gap-4">
+							<span
+								class="w-10 h-10 shrink-0 rounded-xl bg-laxa-red/20 text-laxa-red flex items-center justify-center"
+								><i class="fa-solid fa-quote-right"></i
+							></span>
+							<div>
+								<h3 class="font-heading font-bold text-white text-sm">
+									3. Retrieve & Answer
+								</h3>
+								<p class="text-xs text-slate-400 mt-1 leading-relaxed">
+									The agent fetches the best passages, writes the answer and
+									shows the source for every claim.
+								</p>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="laxa-glass-red rounded-3xl p-6 border border-laxa-red/40">
+					<div
+						class="flex items-center justify-between pb-3 border-b border-white/10">
+						<span class="font-heading font-bold text-white text-sm"
+							><i class="fa-solid fa-comments text-laxa-red mr-2"></i>Knowledge
+							Assistant</span
+						><span
+							class="text-[10px] font-mono text-amber-300 bg-amber-500/10 border border-amber-500/30 px-2 py-0.5 rounded-full"
+							>DEMO · SAMPLE DATA</span
+						>
+					</div>
+					<div
+						id="rag-chat"
+						class="my-4 h-56 overflow-y-auto space-y-3 text-xs">
+						<p class="text-slate-500 font-mono">
+							Pick a sample question below.
+						</p>
+					</div>
+					<div class="flex flex-wrap gap-2">
+						<button
+							onclick="askRag(0)"
+							class="text-[11px] font-mono px-3 py-1.5 rounded-full laxa-glass border border-white/10 hover:border-laxa-red/60 text-slate-300 transition-all">
+							What is the refund policy?</button
+						><button
+							onclick="askRag(1)"
+							class="text-[11px] font-mono px-3 py-1.5 rounded-full laxa-glass border border-white/10 hover:border-laxa-red/60 text-slate-300 transition-all">
+							How do I reset SSO?</button
+						><button
+							onclick="askRag(2)"
+							class="text-[11px] font-mono px-3 py-1.5 rounded-full laxa-glass border border-white/10 hover:border-laxa-red/60 text-slate-300 transition-all">
+							Who approves discounts?
+						</button>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<section
+			id="ai-capabilities"
+			class="py-20 px-4 max-w-7xl mx-auto border-t border-white/5 relative z-10">
+			<div class="mb-12 text-center flex flex-col items-center">
+				<span class="text-xs font-mono uppercase tracking-widest text-laxa-red"
+					>Advanced AI Capabilities</span
+				>
+				<h2
+					class="text-3xl sm:text-5xl font-extrabold font-heading text-white mt-2">
+					The Full AI Agent Toolkit
+				</h2>
+				<p class="text-slate-400 mt-3 max-w-2xl">
+					Everything needed to take an agent from prototype to production.
+				</p>
+			</div>
+			<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+				<div
+					class="laxa-glass-red rounded-3xl p-6 group hover:-translate-y-1 transition-all">
+					<div
+						class="w-12 h-12 rounded-2xl bg-laxa-red/20 border border-laxa-red/40 flex items-center justify-center text-laxa-red text-xl mb-4">
+						<i class="fa-solid fa-eye"></i>
+					</div>
+					<h3 class="text-lg font-bold font-heading text-white">
+						Vision & Document AI
+					</h3>
+					<p class="text-xs text-slate-400 mt-2 leading-relaxed">
+						Read invoices, IDs, forms and screenshots, then turn them into
+						structured data.
+					</p>
+				</div>
+				<div
+					class="laxa-glass-red rounded-3xl p-6 group hover:-translate-y-1 transition-all">
+					<div
+						class="w-12 h-12 rounded-2xl bg-laxa-red/20 border border-laxa-red/40 flex items-center justify-center text-laxa-red text-xl mb-4">
+						<i class="fa-solid fa-microphone-lines"></i>
+					</div>
+					<h3 class="text-lg font-bold font-heading text-white">
+						Voice Agents
+					</h3>
+					<p class="text-xs text-slate-400 mt-2 leading-relaxed">
+						Natural phone and voice-note agents with live handoff to a human.
+					</p>
+				</div>
+				<div
+					class="laxa-glass-red rounded-3xl p-6 group hover:-translate-y-1 transition-all">
+					<div
+						class="w-12 h-12 rounded-2xl bg-laxa-red/20 border border-laxa-red/40 flex items-center justify-center text-laxa-red text-xl mb-4">
+						<i class="fa-solid fa-memory"></i>
+					</div>
+					<h3 class="text-lg font-bold font-heading text-white">
+						Long-Term Memory
+					</h3>
+					<p class="text-xs text-slate-400 mt-2 leading-relaxed">
+						Agents remember customer context across sessions instead of starting
+						over.
+					</p>
+				</div>
+				<div
+					class="laxa-glass-red rounded-3xl p-6 group hover:-translate-y-1 transition-all">
+					<div
+						class="w-12 h-12 rounded-2xl bg-laxa-red/20 border border-laxa-red/40 flex items-center justify-center text-laxa-red text-xl mb-4">
+						<i class="fa-solid fa-screwdriver-wrench"></i>
+					</div>
+					<h3 class="text-lg font-bold font-heading text-white">
+						Tool & API Calling
+					</h3>
+					<p class="text-xs text-slate-400 mt-2 leading-relaxed">
+						Agents call your CRM, email, calendar and databases through approved
+						tools.
+					</p>
+				</div>
+				<div
+					class="laxa-glass-red rounded-3xl p-6 group hover:-translate-y-1 transition-all">
+					<div
+						class="w-12 h-12 rounded-2xl bg-laxa-red/20 border border-laxa-red/40 flex items-center justify-center text-laxa-red text-xl mb-4">
+						<i class="fa-solid fa-sliders"></i>
+					</div>
+					<h3 class="text-lg font-bold font-heading text-white">
+						Model Router
+					</h3>
+					<p class="text-xs text-slate-400 mt-2 leading-relaxed">
+						Send each task to the best-fit model for quality, speed and cost.
+					</p>
+				</div>
+				<div
+					class="laxa-glass-red rounded-3xl p-6 group hover:-translate-y-1 transition-all">
+					<div
+						class="w-12 h-12 rounded-2xl bg-laxa-red/20 border border-laxa-red/40 flex items-center justify-center text-laxa-red text-xl mb-4">
+						<i class="fa-solid fa-flask-vial"></i>
+					</div>
+					<h3 class="text-lg font-bold font-heading text-white">
+						Evals & Testing
+					</h3>
+					<p class="text-xs text-slate-400 mt-2 leading-relaxed">
+						Test agents on sample tasks before launch and after every change.
+					</p>
+				</div>
+			</div>
+		</section>
+
+		<section
+			id="templates"
+			class="py-20 px-4 max-w-7xl mx-auto border-t border-white/5 relative z-10">
+			<div class="mb-6">
+				<span class="text-xs font-mono uppercase tracking-widest text-laxa-red"
+					>Agent Template Store</span
+				>
+				<h2
+					class="text-3xl sm:text-5xl font-extrabold font-heading text-white mt-2">
+					Ready-Made AI Agent Templates
+				</h2>
+				<p class="text-slate-400 mt-3 max-w-2xl">
+					Pick a tested template, customize it and go live faster.
+				</p>
+			</div>
+			<div id="tpl-filters" class="flex flex-wrap gap-2 mb-8"></div>
+			<div
+				id="tpl-grid"
+				class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"></div>
+		</section>
+
+		<!-- AI AGENT MARKETPLACE -->
+		<section
+			id="marketplace"
+			class="py-20 px-4 max-w-7xl mx-auto border-t border-white/5">
+			<div class="flex flex-col md:flex-row md:items-end justify-between mb-12">
+				<div>
+					<span
+						class="text-xs font-mono uppercase tracking-widest text-laxa-red"
+						>Ready To Deploy</span
+					>
+					<h2
+						class="text-3xl sm:text-5xl font-extrabold font-heading text-white mt-2">
+						AI Agent Marketplace
+					</h2>
+					<p class="text-slate-400 mt-2 max-w-xl">
+						Pre-trained enterprise agents ready to seamlessly integrate into
+						your technology stack.
+					</p>
+				</div>
+				<div class="mt-4 md:mt-0 flex gap-2 overflow-x-auto pb-2">
+					<button
+						class="px-4 py-2 rounded-xl bg-laxa-red text-white text-xs font-semibold">
+						All Agents
+					</button>
+					<button
+						class="px-4 py-2 rounded-xl laxa-glass text-slate-300 text-xs font-semibold hover:bg-white/10">
+						Sales & Lead Gen
+					</button>
+					<button
+						class="px-4 py-2 rounded-xl laxa-glass text-slate-300 text-xs font-semibold hover:bg-white/10">
+						Customer Support
+					</button>
+					<button
+						class="px-4 py-2 rounded-xl laxa-glass text-slate-300 text-xs font-semibold hover:bg-white/10">
+						Data ETL
+					</button>
+				</div>
+			</div>
+
+			<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+				<!-- Agent Card 1 -->
+				<div
+					class="laxa-glass-red rounded-3xl p-6 border border-laxa-red/30 flex flex-col justify-between group hover:-translate-y-1 transition-all">
+					<div>
+						<div class="flex justify-between items-start mb-4">
+							<div
+								class="w-12 h-12 rounded-2xl bg-laxa-red/20 border border-laxa-red/40 flex items-center justify-center text-laxa-red text-xl">
+								<i class="fa-solid fa-bolt"></i>
+							</div>
+							<span
+								class="text-[10px] font-mono text-emerald-400 bg-emerald-500/10 border border-emerald-500/30 px-2.5 py-1 rounded-full"
+								>POPULAR</span
+							>
+						</div>
+						<h3 class="text-xl font-bold font-heading text-white">
+							Lead Qualifier Bot
+						</h3>
+						<p class="text-xs text-slate-400 mt-2 leading-relaxed">
+							Evaluates inbound form leads, enriches domain metadata, scores
+							budget fit, and schedules calendar appointments.
+						</p>
+					</div>
+					<div
+						class="mt-6 pt-4 border-t border-white/10 flex items-center justify-between">
+						<span class="text-xs font-mono text-slate-400"
+							>Deploy Time: &lt; 2 mins</span
+						>
+						<a
+							href="#contact"
+							class="text-xs font-bold text-laxa-red group-hover:underline flex items-center gap-1"
+							>Deploy Now <i class="fa-solid fa-arrow-right"></i
+						></a>
+					</div>
+				</div>
+
+				<!-- Agent Card 2 -->
+				<div
+					class="laxa-glass-red rounded-3xl p-6 border border-laxa-red/30 flex flex-col justify-between group hover:-translate-y-1 transition-all">
+					<div>
+						<div class="flex justify-between items-start mb-4">
+							<div
+								class="w-12 h-12 rounded-2xl bg-laxa-red/20 border border-laxa-red/40 flex items-center justify-center text-laxa-red text-xl">
+								<i class="fa-solid fa-phone-volume"></i>
+							</div>
+							<span
+								class="text-[10px] font-mono text-laxa-red bg-laxa-red/10 border border-laxa-red/30 px-2.5 py-1 rounded-full"
+								>VOICE AGENT</span
+							>
+						</div>
+						<h3 class="text-xl font-bold font-heading text-white">
+							Sub-Second Voice AI
+						</h3>
+						<p class="text-xs text-slate-400 mt-2 leading-relaxed">
+							Human-sounding ultra-low latency conversational AI for phone
+							sales, customer confirmations, and support calls.
+						</p>
+					</div>
+					<div
+						class="mt-6 pt-4 border-t border-white/10 flex items-center justify-between">
+						<span class="text-xs font-mono text-slate-400">Latency: 280ms</span>
+						<a
+							href="#contact"
+							class="text-xs font-bold text-laxa-red group-hover:underline flex items-center gap-1"
+							>Deploy Now <i class="fa-solid fa-arrow-right"></i
+						></a>
+					</div>
+				</div>
+
+				<!-- Agent Card 3 -->
+				<div
+					class="laxa-glass-red rounded-3xl p-6 border border-laxa-red/30 flex flex-col justify-between group hover:-translate-y-1 transition-all">
+					<div>
+						<div class="flex justify-between items-start mb-4">
+							<div
+								class="w-12 h-12 rounded-2xl bg-laxa-red/20 border border-laxa-red/40 flex items-center justify-center text-laxa-red text-xl">
+								<i class="fa-solid fa-file-invoice"></i>
+							</div>
+							<span
+								class="text-[10px] font-mono text-blue-400 bg-blue-500/10 border border-blue-500/30 px-2.5 py-1 rounded-full"
+								>FINANCE</span
+							>
+						</div>
+						<h3 class="text-xl font-bold font-heading text-white">
+							Invoice & ERP Parser
+						</h3>
+						<p class="text-xs text-slate-400 mt-2 leading-relaxed">
+							Reads complex multi-page invoices, extracts line items, reconciles
+							bank statements, and syncs directly to QuickBooks.
+						</p>
+					</div>
+					<div
+						class="mt-6 pt-4 border-t border-white/10 flex items-center justify-between">
+						<span class="text-xs font-mono text-slate-400"
+							>Accuracy: 99.9%</span
+						>
+						<a
+							href="#contact"
+							class="text-xs font-bold text-laxa-red group-hover:underline flex items-center gap-1"
+							>Deploy Now <i class="fa-solid fa-arrow-right"></i
+						></a>
+					</div>
+				</div>
+				<div
+					class="laxa-glass-red rounded-3xl p-6 border border-laxa-red/30 flex flex-col justify-between group hover:-translate-y-1 transition-all">
+					<div>
+						<div class="flex justify-between items-start mb-4">
+							<div
+								class="w-12 h-12 rounded-2xl bg-laxa-red/20 border border-laxa-red/40 flex items-center justify-center text-laxa-red text-xl">
+								<i class="fa-solid fa-headset"></i>
+							</div>
+							<span
+								class="text-[10px] font-mono text-amber-300 bg-amber-500/10 border border-amber-500/30 px-2.5 py-1 rounded-full"
+								>SUPPORT</span
+							>
+						</div>
+						<h3 class="text-xl font-bold font-heading text-white">
+							Support Triage Agent
+						</h3>
+						<p class="text-xs text-slate-400 mt-2 leading-relaxed">
+							Classifies tickets, drafts replies from your knowledge base and
+							escalates to a human when unsure.
+						</p>
+					</div>
+					<div
+						class="mt-6 pt-4 border-t border-white/10 flex items-center justify-between">
+						<span class="text-xs font-mono text-slate-400"
+							>Handoff: built-in</span
+						><a
+							href="#contact"
+							class="text-xs font-bold text-laxa-red group-hover:underline flex items-center gap-1"
+							>Deploy Now <i class="fa-solid fa-arrow-right"></i
+						></a>
+					</div>
+				</div>
+				<div
+					class="laxa-glass-red rounded-3xl p-6 border border-laxa-red/30 flex flex-col justify-between group hover:-translate-y-1 transition-all">
+					<div>
+						<div class="flex justify-between items-start mb-4">
+							<div
+								class="w-12 h-12 rounded-2xl bg-laxa-red/20 border border-laxa-red/40 flex items-center justify-center text-laxa-red text-xl">
+								<i class="fa-solid fa-book-open"></i>
+							</div>
+							<span
+								class="text-[10px] font-mono text-violet-300 bg-violet-500/10 border border-violet-500/30 px-2.5 py-1 rounded-full"
+								>RAG</span
+							>
+						</div>
+						<h3 class="text-xl font-bold font-heading text-white">
+							Knowledge Base Assistant
+						</h3>
+						<p class="text-xs text-slate-400 mt-2 leading-relaxed">
+							Answers team and customer questions from your documents and cites
+							the source for each answer.
+						</p>
+					</div>
+					<div
+						class="mt-6 pt-4 border-t border-white/10 flex items-center justify-between">
+						<span class="text-xs font-mono text-slate-400"
+							>Answers: with sources</span
+						><a
+							href="#contact"
+							class="text-xs font-bold text-laxa-red group-hover:underline flex items-center gap-1"
+							>Deploy Now <i class="fa-solid fa-arrow-right"></i
+						></a>
+					</div>
+				</div>
+				<div
+					class="laxa-glass-red rounded-3xl p-6 border border-laxa-red/30 flex flex-col justify-between group hover:-translate-y-1 transition-all">
+					<div>
+						<div class="flex justify-between items-start mb-4">
+							<div
+								class="w-12 h-12 rounded-2xl bg-laxa-red/20 border border-laxa-red/40 flex items-center justify-center text-laxa-red text-xl">
+								<i class="fa-solid fa-chart-column"></i>
+							</div>
+							<span
+								class="text-[10px] font-mono text-cyan-300 bg-cyan-500/10 border border-cyan-500/30 px-2.5 py-1 rounded-full"
+								>RESEARCH</span
+							>
+						</div>
+						<h3 class="text-xl font-bold font-heading text-white">
+							Market Intel Agent
+						</h3>
+						<p class="text-xs text-slate-400 mt-2 leading-relaxed">
+							Tracks competitors and news, then sends a short daily brief to
+							Slack or email.
+						</p>
+					</div>
+					<div
+						class="mt-6 pt-4 border-t border-white/10 flex items-center justify-between">
+						<span class="text-xs font-mono text-slate-400"
+							>Output: daily brief</span
+						><a
+							href="#contact"
+							class="text-xs font-bold text-laxa-red group-hover:underline flex items-center gap-1"
+							>Deploy Now <i class="fa-solid fa-arrow-right"></i
+						></a>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<section
+			id="process"
+			class="py-20 px-4 max-w-7xl mx-auto border-t border-white/5 relative z-10">
+			<div class="mb-12">
+				<span class="text-xs font-mono uppercase tracking-widest text-laxa-red"
+					>How We Work</span
+				>
+				<h2
+					class="text-3xl sm:text-5xl font-extrabold font-heading text-white mt-2">
+					From Idea to Live Agent
+				</h2>
+				<p class="text-slate-400 mt-3 max-w-2xl">A simple four-step process.</p>
+			</div>
+			<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+				<div class="laxa-glass rounded-3xl p-6 border border-white/10 relative">
+					<span
+						class="absolute top-4 right-5 font-heading font-extrabold text-5xl text-laxa-red/20"
+						>1</span
+					>
+					<div
+						class="w-11 h-11 rounded-xl bg-laxa-red/20 text-laxa-red flex items-center justify-center mb-4">
+						<i class="fa-solid fa-comments"></i>
+					</div>
+					<h3 class="font-heading font-bold text-white">Discover</h3>
+					<p class="text-xs text-slate-400 mt-2 leading-relaxed">
+						We learn your goals, tools and the tasks to automate.
+					</p>
+				</div>
+				<div class="laxa-glass rounded-3xl p-6 border border-white/10 relative">
+					<span
+						class="absolute top-4 right-5 font-heading font-extrabold text-5xl text-laxa-red/20"
+						>2</span
+					>
+					<div
+						class="w-11 h-11 rounded-xl bg-laxa-red/20 text-laxa-red flex items-center justify-center mb-4">
+						<i class="fa-solid fa-pen-ruler"></i>
+					</div>
+					<h3 class="font-heading font-bold text-white">Design</h3>
+					<p class="text-xs text-slate-400 mt-2 leading-relaxed">
+						We map the agents, workflows and integrations.
+					</p>
+				</div>
+				<div class="laxa-glass rounded-3xl p-6 border border-white/10 relative">
+					<span
+						class="absolute top-4 right-5 font-heading font-extrabold text-5xl text-laxa-red/20"
+						>3</span
+					>
+					<div
+						class="w-11 h-11 rounded-xl bg-laxa-red/20 text-laxa-red flex items-center justify-center mb-4">
+						<i class="fa-solid fa-hammer"></i>
+					</div>
+					<h3 class="font-heading font-bold text-white">Build & Test</h3>
+					<p class="text-xs text-slate-400 mt-2 leading-relaxed">
+						We build the agents and test them on real scenarios.
+					</p>
+				</div>
+				<div class="laxa-glass rounded-3xl p-6 border border-white/10 relative">
+					<span
+						class="absolute top-4 right-5 font-heading font-extrabold text-5xl text-laxa-red/20"
+						>4</span
+					>
+					<div
+						class="w-11 h-11 rounded-xl bg-laxa-red/20 text-laxa-red flex items-center justify-center mb-4">
+						<i class="fa-solid fa-rocket"></i>
+					</div>
+					<h3 class="font-heading font-bold text-white">Launch & Monitor</h3>
+					<p class="text-xs text-slate-400 mt-2 leading-relaxed">
+						We go live, watch performance and keep improving.
+					</p>
+				</div>
+			</div>
+		</section>
+
+		<!-- DYNAMIC ROI & SAVINGS CALCULATOR -->
+		<section
+			id="calculator"
+			class="py-20 px-4 max-w-7xl mx-auto border-t border-white/5">
+			<div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+				<div>
+					<span
+						class="text-xs font-mono uppercase tracking-widest text-laxa-red"
+						>QUANTIFIABLE IMPACT</span
+					>
+					<h2
+						class="text-3xl sm:text-5xl font-extrabold font-heading text-white mt-2">
+						Calculate Your AI Automation ROI
+					</h2>
+					<p class="text-slate-400 mt-4 leading-relaxed">
+						Estimate your organization's annual labor hours saved and direct
+						financial savings achieved by replacing repetitive manual tasks with
+						LAXA agent worker nodes.
+					</p>
+
+					<!-- Input Controls -->
+					<div class="mt-8 space-y-6">
+						<div>
+							<div class="flex justify-between text-sm font-semibold mb-2">
+								<span class="text-slate-200">Team Size (Employees)</span>
+								<span id="team-val" class="text-laxa-red font-mono"
+									>25 Employees</span
+								>
+							</div>
+							<input
+								id="team-slider"
+								type="range"
+								min="5"
+								max="200"
+								value="25"
+								class="w-full accent-laxa-red bg-slate-800 h-2 rounded-lg cursor-pointer" />
+						</div>
+
+						<div>
+							<div class="flex justify-between text-sm font-semibold mb-2">
+								<span class="text-slate-200">Average Hourly Rate ($/hr)</span>
+								<span id="rate-val" class="text-laxa-red font-mono"
+									>$45 / hr</span
+								>
+							</div>
+							<input
+								id="rate-slider"
+								type="range"
+								min="20"
+								max="150"
+								value="45"
+								class="w-full accent-laxa-red bg-slate-800 h-2 rounded-lg cursor-pointer" />
+						</div>
+					</div>
+				</div>
+
+				<!-- Dynamic ROI Results Box -->
+				<div
+					class="laxa-glass-red rounded-3xl p-8 border border-laxa-red/40 text-center relative overflow-hidden shadow-[0_0_50px_rgba(255,42,77,0.25)]">
+					<span
+						class="text-xs font-mono text-slate-400 uppercase tracking-widest"
+						>ESTIMATED ANNUAL VALUE</span
+					>
+
+					<div class="my-6">
+						<span
+							id="roi-savings"
+							class="text-5xl sm:text-6xl font-extrabold font-heading text-glow-crimson"
+							>$280,800</span
+						>
+						<span class="block text-xs font-mono text-emerald-400 mt-2"
+							><i class="fa-solid fa-arrow-trend-up mr-1"></i> Net Projected
+							Annual Savings</span
+						>
+					</div>
+
+					<div
+						class="grid grid-cols-2 gap-4 mt-8 pt-6 border-t border-white/10 text-left">
+						<div class="laxa-glass p-4 rounded-xl">
+							<span class="text-[10px] font-mono text-slate-400 uppercase"
+								>Hours Saved / Year</span
+							>
+							<h4
+								id="roi-hours"
+								class="text-2xl font-bold font-heading text-white mt-1">
+								6,240 hrs
+							</h4>
+						</div>
+						<div class="laxa-glass p-4 rounded-xl">
+							<span class="text-[10px] font-mono text-slate-400 uppercase"
+								>Efficiency Gain</span
+							>
+							<h4 class="text-2xl font-bold font-heading text-laxa-red mt-1">
+								10.4x Speed
+							</h4>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<section
+			id="security"
+			class="py-20 px-4 max-w-7xl mx-auto border-t border-white/5 relative z-10">
+			<div class="mb-12">
+				<span class="text-xs font-mono uppercase tracking-widest text-laxa-red"
+					>Guardrails & Security</span
+				>
+				<h2
+					class="text-3xl sm:text-5xl font-extrabold font-heading text-white mt-2">
+					Autonomy With Control
+				</h2>
+				<p class="text-slate-400 mt-3 max-w-2xl">
+					Agents move fast, but you decide the limits.
+				</p>
+			</div>
+			<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+				<div
+					class="laxa-glass-red rounded-3xl p-6 group hover:-translate-y-1 transition-all">
+					<div
+						class="w-12 h-12 rounded-2xl bg-laxa-red/20 border border-laxa-red/40 flex items-center justify-center text-laxa-red text-xl mb-4">
+						<i class="fa-solid fa-user-shield"></i>
+					</div>
+					<h3 class="text-lg font-bold font-heading text-white">
+						PII Redaction
+					</h3>
+					<p class="text-xs text-slate-400 mt-2 leading-relaxed">
+						Mask sensitive data before it reaches a model or a log.
+					</p>
+				</div>
+				<div
+					class="laxa-glass-red rounded-3xl p-6 group hover:-translate-y-1 transition-all">
+					<div
+						class="w-12 h-12 rounded-2xl bg-laxa-red/20 border border-laxa-red/40 flex items-center justify-center text-laxa-red text-xl mb-4">
+						<i class="fa-solid fa-key"></i>
+					</div>
+					<h3 class="text-lg font-bold font-heading text-white">
+						Role-Based Access
+					</h3>
+					<p class="text-xs text-slate-400 mt-2 leading-relaxed">
+						Control which agents, people and data sources can do what.
+					</p>
+				</div>
+				<div
+					class="laxa-glass-red rounded-3xl p-6 group hover:-translate-y-1 transition-all">
+					<div
+						class="w-12 h-12 rounded-2xl bg-laxa-red/20 border border-laxa-red/40 flex items-center justify-center text-laxa-red text-xl mb-4">
+						<i class="fa-solid fa-clipboard-list"></i>
+					</div>
+					<h3 class="text-lg font-bold font-heading text-white">Audit Trail</h3>
+					<p class="text-xs text-slate-400 mt-2 leading-relaxed">
+						Every agent action is recorded and can be reviewed later.
+					</p>
+				</div>
+				<div
+					class="laxa-glass-red rounded-3xl p-6 group hover:-translate-y-1 transition-all">
+					<div
+						class="w-12 h-12 rounded-2xl bg-laxa-red/20 border border-laxa-red/40 flex items-center justify-center text-laxa-red text-xl mb-4">
+						<i class="fa-solid fa-hand"></i>
+					</div>
+					<h3 class="text-lg font-bold font-heading text-white">
+						Human Approval
+					</h3>
+					<p class="text-xs text-slate-400 mt-2 leading-relaxed">
+						Require sign-off for risky actions such as payments or bulk emails.
+					</p>
+				</div>
+			</div>
+		</section>
+
+		<!-- PRICING SECTION -->
+		<section
+			id="pricing"
+			class="py-20 px-4 max-w-7xl mx-auto border-t border-white/5">
+			<div class="text-center max-w-3xl mx-auto mb-14">
+				<span class="text-xs font-mono uppercase tracking-widest text-laxa-red"
+					>Transparent Pricing</span
+				>
+				<h2
+					class="text-3xl sm:text-5xl font-extrabold font-heading text-white mt-2">
+					Scalable Plans for Every Scale
+				</h2>
+				<p class="text-slate-400 mt-3">
+					Deploy dedicated AI worker nodes with zero hidden infrastructure
+					costs.
+				</p>
+			</div>
+
+			<div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-6">
+				<!-- Starter Tier -->
+				<div
+					class="laxa-glass rounded-3xl p-8 border border-white/10 flex flex-col justify-between hover:border-white/30 transition-all">
+					<div>
+						<h3 class="text-xl font-bold font-heading text-white">
+							Starter Engine
+						</h3>
+						<p class="text-xs text-slate-400 mt-1">
+							Ideal for startups & small teams
+						</p>
+						<div class="my-6">
+							<span class="text-4xl font-extrabold font-heading text-white"
+								>$499</span
+							>
+							<span class="text-xs text-slate-400">/ month</span>
+						</div>
+						<ul class="space-y-3 text-xs text-slate-300 font-medium">
+							<li class="flex items-center gap-2">
+								<i class="fa-solid fa-check text-laxa-red"></i> 3 Active AI
+								Agent Nodes
+							</li>
+							<li class="flex items-center gap-2">
+								<i class="fa-solid fa-check text-laxa-red"></i> Up to 50,000
+								Tasks/mo
+							</li>
+							<li class="flex items-center gap-2">
+								<i class="fa-solid fa-check text-laxa-red"></i> Standard Visual
+								Builder
+							</li>
+							<li class="flex items-center gap-2">
+								<i class="fa-solid fa-check text-laxa-red"></i> Webhooks & API
+								Access
+							</li>
+						</ul>
+					</div>
+					<a
+						href="#contact"
+						class="mt-8 w-full py-3 rounded-xl laxa-glass text-white font-bold text-xs hover:bg-white/10 border border-white/10 transition-all block text-center"
+						>Choose Starter</a
+					>
+				</div>
+
+				<div
+					class="laxa-glass rounded-3xl p-8 border border-white/10 flex flex-col justify-between hover:border-white/30 transition-all">
+					<div>
+						<h3 class="text-xl font-bold font-heading text-white">
+							Growth Cluster
+						</h3>
+						<p class="text-xs text-slate-400 mt-1">
+							For teams automating several workflows
+						</p>
+						<div class="my-6">
+							<span class="text-4xl font-extrabold font-heading text-white"
+								>$899</span
+							>
+							<span class="text-xs text-slate-400">/ month</span>
+						</div>
+						<ul class="space-y-3 text-xs text-slate-300 font-medium">
+							<li class="flex items-center gap-2">
+								<i class="fa-solid fa-check text-laxa-red"></i> 8 Active AI
+								Agent Nodes
+							</li>
+							<li class="flex items-center gap-2">
+								<i class="fa-solid fa-check text-laxa-red"></i> Up to 250,000
+								Tasks/mo
+							</li>
+							<li class="flex items-center gap-2">
+								<i class="fa-solid fa-check text-laxa-red"></i> RAG Knowledge
+								Base
+							</li>
+							<li class="flex items-center gap-2">
+								<i class="fa-solid fa-check text-laxa-red"></i> CRM & Slack
+								Integrations
+							</li>
+						</ul>
+					</div>
+					<a
+						href="#contact"
+						class="mt-8 w-full py-3 rounded-xl laxa-glass text-white font-bold text-xs hover:bg-white/10 border border-white/10 transition-all block text-center"
+						>Choose Growth</a
+					>
+				</div>
+
+				<!-- Pro Tier (Featured Crimson Red Glow) -->
+				<div
+					class="laxa-glass-red rounded-3xl p-8 border border-laxa-red/50 flex flex-col justify-between relative shadow-[0_0_40px_rgba(255,42,77,0.3)] transform xl:-translate-y-4">
+					<div
+						class="absolute -top-3 left-1/2 -translate-x-1/2 px-3 py-1 bg-laxa-red text-white text-[10px] font-mono font-bold rounded-full uppercase tracking-wider">
+						MOST POPULAR
+					</div>
+					<div>
+						<h3 class="text-xl font-bold font-heading text-white">
+							Pro Enterprise
+						</h3>
+						<p class="text-xs text-slate-300 mt-1">
+							For scaling growth enterprises
+						</p>
+						<div class="my-6">
+							<span class="text-4xl font-extrabold font-heading text-white"
+								>$1,499</span
+							>
+							<span class="text-xs text-slate-400">/ month</span>
+						</div>
+						<ul class="space-y-3 text-xs text-slate-200 font-medium">
+							<li class="flex items-center gap-2">
+								<i class="fa-solid fa-check text-laxa-red"></i> 15 Active AI
+								Agent Nodes
+							</li>
+							<li class="flex items-center gap-2">
+								<i class="fa-solid fa-check text-laxa-red"></i> Unlimited Task
+								Executions
+							</li>
+							<li class="flex items-center gap-2">
+								<i class="fa-solid fa-check text-laxa-red"></i> Custom Voice &
+								LLM Models
+							</li>
+							<li class="flex items-center gap-2">
+								<i class="fa-solid fa-check text-laxa-red"></i> Dedicated
+								Solution Engineer
+							</li>
+							<li class="flex items-center gap-2">
+								<i class="fa-solid fa-check text-laxa-red"></i> 99.9% Uptime
+								Guarantee SLA
+							</li>
+						</ul>
+					</div>
+					<a
+						href="#contact"
+						class="mt-8 w-full py-3.5 rounded-xl bg-laxa-red hover:bg-laxa-redBright text-white font-bold text-xs shadow-[0_0_20px_rgba(255,42,77,0.5)] transition-all block text-center"
+						>Deploy Pro Cluster</a
+					>
+				</div>
+
+				<!-- Custom Tier -->
+				<div
+					class="laxa-glass rounded-3xl p-8 border border-white/10 flex flex-col justify-between hover:border-white/30 transition-all">
+					<div>
+						<h3 class="text-xl font-bold font-heading text-white">
+							Custom Cluster
+						</h3>
+						<p class="text-xs text-slate-400 mt-1">
+							Dedicated private cloud deployments
+						</p>
+						<div class="my-6">
+							<span class="text-4xl font-extrabold font-heading text-white"
+								>Custom</span
+							>
+						</div>
+						<ul class="space-y-3 text-xs text-slate-300 font-medium">
+							<li class="flex items-center gap-2">
+								<i class="fa-solid fa-check text-laxa-red"></i> On-Premise / VPC
+								Deployment
+							</li>
+							<li class="flex items-center gap-2">
+								<i class="fa-solid fa-check text-laxa-red"></i> Custom Neural
+								Network Tuning
+							</li>
+							<li class="flex items-center gap-2">
+								<i class="fa-solid fa-check text-laxa-red"></i> SOC2 & HIPAA
+								Compliance
+							</li>
+							<li class="flex items-center gap-2">
+								<i class="fa-solid fa-check text-laxa-red"></i> 24/7 Priority
+								Support Phone Line
+							</li>
+						</ul>
+					</div>
+					<a
+						href="#contact"
+						class="mt-8 w-full py-3 rounded-xl laxa-glass text-white font-bold text-xs hover:bg-white/10 border border-white/10 transition-all block text-center"
+						>Contact Enterprise</a
+					>
+				</div>
+			</div>
+		</section>
+
+		<section
+			id="faq"
+			class="py-20 px-4 max-w-7xl mx-auto border-t border-white/5 relative z-10">
+			<div class="mb-8 text-center flex flex-col items-center">
+				<span class="text-xs font-mono uppercase tracking-widest text-laxa-red"
+					>FAQ</span
+				>
+				<h2
+					class="text-3xl sm:text-5xl font-extrabold font-heading text-white mt-2">
+					Frequently Asked Questions
+				</h2>
+				<p class="text-slate-400 mt-3 max-w-2xl">
+					Quick answers about LAXA AI.
+				</p>
+			</div>
+			<div id="faq-list" class="max-w-3xl mx-auto space-y-3"></div>
+		</section>
+
+		<section
+			id="contact"
+			class="py-20 px-4 max-w-7xl mx-auto border-t border-white/5 relative z-10">
+			<div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+				<div>
+					<div class="laxa-glass-red rounded-3xl p-5 border border-laxa-red/30">
+						<div class="flex items-center justify-between mb-1">
+							<span class="font-heading font-bold text-white text-sm"
+								><i class="fa-solid fa-satellite-dish text-laxa-red mr-2"></i
+								>24/7 Traffic Agents</span
+							><span
+								class="text-[10px] font-mono text-amber-300 bg-amber-500/10 border border-amber-500/30 px-2 py-0.5 rounded-full"
+								>LIVE DEMO</span
+							>
+						</div>
+						<svg viewBox="0 0 420 250" class="w-full">
+							<g
+								class="flow-line"
+								stroke="#FF2A4D"
+								stroke-width="1.5"
+								fill="none"
+								stroke-dasharray="4 6">
+								<path d="M60 50 L210 125" />
+								<path d="M360 50 L210 125" />
+								<path d="M60 200 L210 125" />
+								<path d="M360 200 L210 125" />
+							</g>
+							<circle r="3.5" fill="#FFB15C">
+								<animateMotion
+									dur="3s"
+									begin="0s"
+									repeatCount="indefinite"
+									path="M8 125 L185 125" />
+							</circle>
+							<circle r="3.5" fill="#FFB15C">
+								<animateMotion
+									dur="3s"
+									begin="1s"
+									repeatCount="indefinite"
+									path="M8 125 L185 125" />
+							</circle>
+							<circle r="3.5" fill="#FFB15C">
+								<animateMotion
+									dur="3s"
+									begin="2s"
+									repeatCount="indefinite"
+									path="M8 125 L185 125" />
+							</circle>
+							<text
+								class="svg-label"
+								x="8"
+								y="145"
+								font-size="9"
+								font-family="monospace"
+								opacity=".7">
+								VISITORS
+							</text>
+							<circle
+								cx="210"
+								cy="125"
+								r="30"
+								fill="rgba(255,42,77,.15)"
+								stroke="#FF2A4D"
+								stroke-width="1.5">
+								<animate
+									attributeName="r"
+									values="30;34;30"
+									dur="2.5s"
+									repeatCount="indefinite" />
+							</circle>
+							<text
+								class="svg-label"
+								x="210"
+								y="123"
+								text-anchor="middle"
+								font-size="10"
+								font-weight="700"
+								font-family="monospace">
+								LAXA
+							</text>
+							<text
+								class="svg-label"
+								x="210"
+								y="136"
+								text-anchor="middle"
+								font-size="9"
+								font-family="monospace">
+								CORE
+							</text>
+							<g>
+								<circle
+									cx="60"
+									cy="50"
+									r="22"
+									fill="rgba(255,42,77,.2)"
+									stroke="#E8B64C"
+									stroke-width="1.5">
+									<animate
+										attributeName="opacity"
+										values=".6;1;.6"
+										dur="2s"
+										begin="0.0s"
+										repeatCount="indefinite" />
+								</circle>
+								<text
+									class="svg-label"
+									x="60"
+									y="54"
+									text-anchor="middle"
+									font-size="11"
+									font-weight="700"
+									font-family="monospace">
+									AI
+								</text>
+								<text
+									class="svg-label"
+									x="60"
+									y="20"
+									text-anchor="middle"
+									font-size="9"
+									font-family="monospace">
+									Greeter
+								</text>
+							</g>
+							<g>
+								<circle
+									cx="360"
+									cy="50"
+									r="22"
+									fill="rgba(255,42,77,.2)"
+									stroke="#E8B64C"
+									stroke-width="1.5">
+									<animate
+										attributeName="opacity"
+										values=".6;1;.6"
+										dur="2s"
+										begin="0.5s"
+										repeatCount="indefinite" />
+								</circle>
+								<text
+									class="svg-label"
+									x="360"
+									y="54"
+									text-anchor="middle"
+									font-size="11"
+									font-weight="700"
+									font-family="monospace">
+									AI
+								</text>
+								<text
+									class="svg-label"
+									x="360"
+									y="20"
+									text-anchor="middle"
+									font-size="9"
+									font-family="monospace">
+									Lead Capture
+								</text>
+							</g>
+							<g>
+								<circle
+									cx="60"
+									cy="200"
+									r="22"
+									fill="rgba(255,42,77,.2)"
+									stroke="#E8B64C"
+									stroke-width="1.5">
+									<animate
+										attributeName="opacity"
+										values=".6;1;.6"
+										dur="2s"
+										begin="1.0s"
+										repeatCount="indefinite" />
+								</circle>
+								<text
+									class="svg-label"
+									x="60"
+									y="204"
+									text-anchor="middle"
+									font-size="11"
+									font-weight="700"
+									font-family="monospace">
+									AI
+								</text>
+								<text
+									class="svg-label"
+									x="60"
+									y="238"
+									text-anchor="middle"
+									font-size="9"
+									font-family="monospace">
+									Follow-up
+								</text>
+							</g>
+							<g>
+								<circle
+									cx="360"
+									cy="200"
+									r="22"
+									fill="rgba(255,42,77,.2)"
+									stroke="#E8B64C"
+									stroke-width="1.5">
+									<animate
+										attributeName="opacity"
+										values=".6;1;.6"
+										dur="2s"
+										begin="1.5s"
+										repeatCount="indefinite" />
+								</circle>
+								<text
+									class="svg-label"
+									x="360"
+									y="204"
+									text-anchor="middle"
+									font-size="11"
+									font-weight="700"
+									font-family="monospace">
+									AI
+								</text>
+								<text
+									class="svg-label"
+									x="360"
+									y="238"
+									text-anchor="middle"
+									font-size="9"
+									font-family="monospace">
+									Content / SEO
+								</text>
+							</g>
+						</svg>
+						<div
+							id="traffic-ticker"
+							class="mt-1 font-mono text-[11px] text-slate-300 h-5 overflow-hidden"></div>
+					</div>
+					<div class="mt-6 flex flex-wrap gap-3">
+						<a
+							href="#"
+							data-wa
+							class="px-5 py-3 rounded-xl bg-[#25D366] text-black font-bold text-sm flex items-center gap-2"
+							><i class="fa-brands fa-whatsapp text-lg"></i> Chat on WhatsApp</a
+						>
+						<a
+							href="https://www.linkedin.com/in/ali-shanawar-4176623ba/"
+							target="_blank"
+							rel="noopener"
+							class="px-5 py-3 rounded-xl laxa-glass border border-white/10 text-white font-bold text-sm flex items-center gap-2"
+							><i class="fa-brands fa-linkedin"></i> LinkedIn</a
+						>
+						<a
+							href="https://www.instagram.com/xavanxai/"
+							target="_blank"
+							rel="noopener"
+							class="px-5 py-3 rounded-xl laxa-glass border border-white/10 text-white font-bold text-sm flex items-center gap-2"
+							><i class="fa-brands fa-instagram"></i> Instagram</a
+						>
+					</div>
+				</div>
+				<form
+					onsubmit="submitContact(event)"
+					class="laxa-glass-red rounded-3xl p-8 border border-laxa-red/40 space-y-4">
+					<input
+						id="c-name"
+						required
+						placeholder="Your name"
+						class="w-full rounded-xl bg-black/40 border border-white/10 focus:border-laxa-red outline-none px-4 py-3 text-sm text-white placeholder-slate-500" />
+					<input
+						id="c-email"
+						type="email"
+						required
+						placeholder="Email address"
+						class="w-full rounded-xl bg-black/40 border border-white/10 focus:border-laxa-red outline-none px-4 py-3 text-sm text-white placeholder-slate-500" />
+					<select
+						id="c-plan"
+						class="w-full rounded-xl bg-black/40 border border-white/10 focus:border-laxa-red outline-none px-4 py-3 text-sm text-white placeholder-slate-500">
+						<option>Starter</option>
+						<option>Growth</option>
+						<option>Pro Enterprise</option>
+						<option>Custom Cluster</option>
+					</select>
+					<textarea
+						id="c-msg"
+						required
+						rows="4"
+						placeholder="What do you want to automate?"
+						class="w-full rounded-xl bg-black/40 border border-white/10 focus:border-laxa-red outline-none px-4 py-3 text-sm text-white placeholder-slate-500"></textarea>
+					<button
+						class="w-full py-3.5 rounded-xl bg-laxa-red hover:bg-laxa-redBright text-white font-bold text-sm shadow-[0_0_20px_rgba(255,42,77,0.5)] transition-all">
+						Send via WhatsApp <i class="fa-solid fa-paper-plane ml-1"></i>
+					</button>
+					<p class="text-[10px] text-slate-500 font-mono">
+						Opens WhatsApp with your message pre-filled. Your data is not stored
+						on this page.
+					</p>
+				</form>
+			</div>
+		</section>
+		<footer id="footer" class="relative z-10 border-t border-white/10 mt-8">
+			<div
+				class="max-w-7xl mx-auto px-4 py-14 grid grid-cols-2 md:grid-cols-5 gap-10 text-xs text-slate-400">
+				<div class="col-span-2">
+					<a href="#hero" class="flex items-center gap-3"
+						><svg
+							viewBox="0 0 200 200"
+							class="w-14 h-14"
+							aria-label="LAXA AI logo">
+							<use href="#laxa-logo" width="200" height="200" /></svg
+						><span
+							class="font-heading font-extrabold text-2xl text-white tracking-wider"
+							>LAXA<span class="text-laxa-red text-xs ml-1 font-mono"
+								>AI</span
+							></span
+						></a
+					>
+					<p class="mt-4 max-w-xs leading-relaxed">
+						AI agents, chatbots, voice agents and n8n workflow automation for
+						modern businesses.
+					</p>
+					<div class="flex flex-wrap gap-3 mt-5 text-base">
+						<a
+							href="#"
+							data-social="youtube"
+							target="_blank"
+							rel="noopener"
+							aria-label="Youtube"
+							class="w-10 h-10 rounded-xl laxa-glass border border-white/10 flex items-center justify-center hover:text-laxa-red hover:-translate-y-1 transition-all"
+							><i class="fa-brands fa-youtube"></i></a
+						><a
+							href="#"
+							data-social="facebook"
+							target="_blank"
+							rel="noopener"
+							aria-label="Facebook"
+							class="w-10 h-10 rounded-xl laxa-glass border border-white/10 flex items-center justify-center hover:text-laxa-red hover:-translate-y-1 transition-all"
+							><i class="fa-brands fa-facebook-f"></i></a
+						><a
+							href="#"
+							data-social="instagram"
+							target="_blank"
+							rel="noopener"
+							aria-label="Instagram"
+							class="w-10 h-10 rounded-xl laxa-glass border border-white/10 flex items-center justify-center hover:text-laxa-red hover:-translate-y-1 transition-all"
+							><i class="fa-brands fa-instagram"></i></a
+						><a
+							href="#"
+							data-social="linkedin"
+							target="_blank"
+							rel="noopener"
+							aria-label="Linkedin"
+							class="w-10 h-10 rounded-xl laxa-glass border border-white/10 flex items-center justify-center hover:text-laxa-red hover:-translate-y-1 transition-all"
+							><i class="fa-brands fa-linkedin-in"></i></a
+						><a
+							href="#"
+							data-wa
+							aria-label="WhatsApp"
+							class="w-10 h-10 rounded-xl laxa-glass border border-white/10 flex items-center justify-center hover:text-[#25D366] hover:-translate-y-1 transition-all"
+							><i class="fa-brands fa-whatsapp"></i
+						></a>
+					</div>
+				</div>
+				<div>
+					<h4 class="font-heading font-bold text-white text-sm mb-4">
+						Platform
+					</h4>
+					<ul class="space-y-2.5">
+						<li>
+							<a href="#services" class="hover:text-laxa-red transition-colors"
+								>Services</a
+							>
+						</li>
+						<li>
+							<a href="#workflows" class="hover:text-laxa-red transition-colors"
+								>Workflows</a
+							>
+						</li>
+						<li>
+							<a
+								href="#multi-agent"
+								class="hover:text-laxa-red transition-colors"
+								>AI Stack</a
+							>
+						</li>
+						<li>
+							<a href="#templates" class="hover:text-laxa-red transition-colors"
+								>Templates</a
+							>
+						</li>
+						<li>
+							<a
+								href="#marketplace"
+								class="hover:text-laxa-red transition-colors"
+								>Marketplace</a
+							>
+						</li>
+					</ul>
+				</div>
+				<div>
+					<h4 class="font-heading font-bold text-white text-sm mb-4">
+						Company
+					</h4>
+					<ul class="space-y-2.5">
+						<li>
+							<a href="#process" class="hover:text-laxa-red transition-colors"
+								>How We Work</a
+							>
+						</li>
+						<li>
+							<a href="#pricing" class="hover:text-laxa-red transition-colors"
+								>Pricing</a
+							>
+						</li>
+						<li>
+							<a href="#security" class="hover:text-laxa-red transition-colors"
+								>Security</a
+							>
+						</li>
+						<li>
+							<a href="#faq" class="hover:text-laxa-red transition-colors"
+								>FAQ</a
+							>
+						</li>
+						<li>
+							<a href="#contact" class="hover:text-laxa-red transition-colors"
+								>Contact</a
+							>
+						</li>
+					</ul>
+				</div>
+				<div>
+					<h4 class="font-heading font-bold text-white text-sm mb-4">Legal</h4>
+					<ul class="space-y-2.5">
+						<li>
+							<a
+								href="#"
+								onclick="
+									openLegal('privacy');
+									return false;
+								"
+								class="hover:text-laxa-red transition-colors"
+								>Privacy Policy</a
+							>
+						</li>
+						<li>
+							<a
+								href="#"
+								onclick="
+									openLegal('terms');
+									return false;
+								"
+								class="hover:text-laxa-red transition-colors"
+								>Terms &amp; Conditions</a
+							>
+						</li>
+						<li>
+							<a
+								href="#"
+								onclick="
+									openLegal('security');
+									return false;
+								"
+								class="hover:text-laxa-red transition-colors"
+								>Security Policy</a
+							>
+						</li>
+						<li>
+							<a
+								href="#"
+								onclick="
+									toggleAgentLogModal();
+									return false;
+								"
+								class="hover:text-laxa-red transition-colors"
+								>System Status</a
+							>
+						</li>
+					</ul>
+				</div>
+			</div>
+			<div class="max-w-7xl mx-auto px-4 pb-6 flex flex-wrap gap-2">
+				<span
+					class="flex items-center gap-2 px-3 py-1.5 rounded-full laxa-glass border border-white/10 text-[10px] font-mono text-slate-300"
+					><i class="fa-solid fa-lock text-laxa-red"></i>Encrypted in
+					transit</span
+				><span
+					class="flex items-center gap-2 px-3 py-1.5 rounded-full laxa-glass border border-white/10 text-[10px] font-mono text-slate-300"
+					><i class="fa-solid fa-user-shield text-laxa-red"></i>PII
+					redaction</span
+				><span
+					class="flex items-center gap-2 px-3 py-1.5 rounded-full laxa-glass border border-white/10 text-[10px] font-mono text-slate-300"
+					><i class="fa-solid fa-key text-laxa-red"></i>Role-based access</span
+				><span
+					class="flex items-center gap-2 px-3 py-1.5 rounded-full laxa-glass border border-white/10 text-[10px] font-mono text-slate-300"
+					><i class="fa-solid fa-clipboard-list text-laxa-red"></i>Audit
+					logs</span
+				>
+			</div>
+			<div
+				class="border-t border-white/5 py-5 px-4 text-center text-[11px] text-slate-500 font-mono">
+				&copy; 2026 LAXA AI. All rights reserved. ·
+				<a
+					href="#"
+					onclick="
+						openLegal('terms');
+						return false;
+					"
+					class="hover:text-laxa-red"
+					>Terms</a
+				>
+				·
+				<a
+					href="#"
+					onclick="
+						openLegal('privacy');
+						return false;
+					"
+					class="hover:text-laxa-red"
+					>Privacy</a
+				>
+				· <a href="#security" class="hover:text-laxa-red">Security</a>
+			</div>
+		</footer>
+
+		<a
+			href="#"
+			data-wa
+			aria-label="Chat on WhatsApp"
+			class="wa-fab fixed bottom-6 right-6 z-50 w-14 h-14 rounded-full bg-[#25D366] text-white text-3xl flex items-center justify-center shadow-[0_0_25px_rgba(37,211,102,0.55)] hover:scale-110 transition-transform"
+			><i class="fa-brands fa-whatsapp"></i
+		></a>
+		<button
+			id="voice-launch"
+			onclick="toggleVoice()"
+			aria-label="Voice assistant"
+			class="fixed bottom-6 left-6 z-50 h-14 pl-4 pr-5 rounded-full bg-gradient-to-r from-laxa-red to-laxa-redBright text-white font-bold text-sm flex items-center gap-2 shadow-[0_0_25px_rgba(255,42,77,0.6)] hover:scale-105 transition-transform">
+			<i class="fa-solid fa-microphone"></i> Ask LAXA
+		</button>
+		<div
+			id="voice-panel"
+			class="hidden fixed bottom-24 left-4 z-50 w-[calc(100vw-2rem)] sm:w-96 laxa-glass-red rounded-3xl border border-laxa-red/40 shadow-2xl flex-col overflow-hidden">
+			<div
+				class="flex items-center justify-between px-5 py-4 border-b border-white/10">
+				<div>
+					<div class="font-heading font-bold text-white text-sm">
+						<i class="fa-solid fa-wave-square text-laxa-red mr-2"></i>LAXA Voice
+						Agent
+					</div>
+					<div class="text-[10px] font-mono text-amber-300">
+						DEMO · answers from this website
+					</div>
+				</div>
+				<div class="flex items-center gap-3 text-slate-300">
+					<button onclick="toggleSpeaker()" id="spk-btn" aria-label="Speaker">
+						<i class="fa-solid fa-volume-high"></i></button
+					><button onclick="toggleVoice()" aria-label="Close">
+						<i class="fa-solid fa-xmark"></i>
+					</button>
+				</div>
+			</div>
+			<div
+				id="voice-log"
+				class="h-60 overflow-y-auto px-5 py-4 space-y-3 text-xs"></div>
+			<div id="voice-chips" class="px-5 pb-2 flex flex-wrap gap-2"></div>
+			<div class="p-4 flex items-center gap-2 border-t border-white/10">
+				<select
+					id="voice-lang"
+					class="bg-black/40 border border-white/10 rounded-lg text-[11px] text-slate-200 px-2 py-2">
+					<option value="en-US">EN</option>
+					<option value="ur-PK">UR</option></select
+				><input
+					id="voice-text"
+					onkeydown="if (event.key === 'Enter') voiceSend();"
+					placeholder="Type or tap the mic..."
+					class="flex-1 min-w-0 rounded-lg bg-black/40 border border-white/10 focus:border-laxa-red outline-none px-3 py-2 text-xs text-white" /><button
+					id="mic-btn"
+					onclick="toggleMic()"
+					aria-label="Speak"
+					class="w-10 h-10 rounded-full bg-laxa-red text-white shrink-0">
+					<i class="fa-solid fa-microphone"></i>
+				</button>
+			</div>
+		</div>
+		<div
+			id="legal-modal"
+			class="fixed inset-0 z-[70] bg-black/80 backdrop-blur-md hidden items-center justify-center p-4">
+			<div
+				class="laxa-glass-red max-w-xl w-full rounded-2xl p-6 border border-laxa-red/40">
+				<div
+					class="flex items-center justify-between pb-3 border-b border-white/10">
+					<h3
+						id="legal-title"
+						class="font-heading font-bold text-white text-lg"></h3>
+					<button
+						onclick="closeLegal()"
+						class="text-slate-400 hover:text-white">
+						<i class="fa-solid fa-xmark"></i>
+					</button>
+				</div>
+				<div
+					id="legal-body"
+					class="my-4 text-sm text-slate-300 leading-relaxed space-y-3 max-h-[60vh] overflow-y-auto"></div>
+			</div>
+		</div>
+
+		<!-- ENGINE LOG MODAL -->
+		<div
+			id="log-modal"
+			class="fixed inset-0 z-50 bg-black/80 backdrop-blur-md hidden items-center justify-center p-4">
+			<div
+				class="laxa-glass-red max-w-2xl w-full rounded-2xl p-6 border border-laxa-red/40 shadow-2xl">
+				<div
+					class="flex items-center justify-between pb-4 border-b border-white/10">
+					<h3
+						class="font-heading font-bold text-white text-lg flex items-center gap-2">
+						<i class="fa-solid fa-terminal text-laxa-red"></i> LAXA Agent
+						Cluster Diagnostics
+					</h3>
+					<button
+						onclick="toggleAgentLogModal()"
+						class="text-slate-400 hover:text-white text-lg">
+						<i class="fa-solid fa-xmark"></i>
+					</button>
+				</div>
+				<div
+					class="my-4 font-mono text-xs space-y-2 h-64 overflow-y-auto text-slate-300">
+					<p class="text-emerald-400">
+						[SYSTEM] Initialization vector loaded. 3D Engine core active.
+					</p>
+					<p class="text-slate-400">
+						[NODE 01] Lead Qualifier Bot -> Heartbeat 200 OK (14ms)
+					</p>
+					<p class="text-slate-400">
+						[NODE 02] Sub-Second Voice AI -> Audio Synthesis Stream Ready
+					</p>
+					<p class="text-slate-400">
+						[NODE 03] Data Synthesizer -> Syncing CRM records (1,240 events/sec)
+					</p>
+					<p class="text-laxa-red">
+						[SECURITY] End-to-end token encryption verified via SSL/TLS.
+					</p>
+				</div>
+				<div class="text-right">
+					<button
+						onclick="toggleAgentLogModal()"
+						class="px-5 py-2 rounded-xl bg-laxa-red text-white text-xs font-bold">
+						Close Diagnostics
+					</button>
+				</div>
+			</div>
+		</div>
+
+		<!-- THREE.JS GLOBE & INTERACTIVE SCRIPT -->
+		<script src="js/script.js"></script>
+		<script>
+			setTimeout(function () {
+				document.body.classList.add("ready");
+				var e = document.getElementById("intro");
+				if (e) e.remove();
+			}, 5000);
+		</script>
+	</body>
+</html>

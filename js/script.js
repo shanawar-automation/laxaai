@@ -1,11 +1,19 @@
 // --- THREE.JS 3D GLOWING GLOBE & ORBITING AGENT NODES ---
 let scene, camera, renderer, globe, particleSystem;
 let orbitingNodes = [];
+let globeVisible = true,
+	globeRaf = 0,
+	globeW = 0,
+	globeH = 0;
+const IS_MOBILE = window.matchMedia("(max-width: 1024px)").matches;
 
-function init3DGlobe() {
+function init3DGlobe() { 
 	const container = document.getElementById("canvas-container");
+	if (!container || typeof THREE === "undefined") return;
 	const width = container.clientWidth;
 	const height = container.clientHeight;
+	globeW = width;
+	globeH = height;
 
 	// Scene setup
 	scene = new THREE.Scene();
@@ -15,13 +23,17 @@ function init3DGlobe() {
 	camera.position.z = 7.5;
 
 	// Renderer setup
-	renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
+	renderer = new THREE.WebGLRenderer({
+		alpha: true,
+		antialias: !IS_MOBILE,
+		powerPreference: "high-performance",
+	});
+	renderer.setPixelRatio(Math.min(window.devicePixelRatio, IS_MOBILE ? 1.5 : 2));
 	renderer.setSize(width, height);
-	renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
 	container.appendChild(renderer.domElement);
 
 	// 1. Core Sphere (Dark Wireframe & Crimson Glowing Mesh)
-	const globeGeo = new THREE.SphereGeometry(2.2, 36, 36);
+	const globeGeo = new THREE.SphereGeometry(2.2, IS_MOBILE ? 28 : 36, IS_MOBILE ? 28 : 36);
 	const globeMat = new THREE.MeshBasicMaterial({
 		color: 0xff2a4d,
 		wireframe: true,
@@ -32,7 +44,7 @@ function init3DGlobe() {
 	scene.add(globe);
 
 	// Inner Core Light Glow
-	const innerCoreGeo = new THREE.SphereGeometry(1.8, 24, 24);
+	const innerCoreGeo = new THREE.SphereGeometry(1.8, IS_MOBILE ? 18 : 24, IS_MOBILE ? 18 : 24);
 	const innerCoreMat = new THREE.MeshBasicMaterial({
 		color: 0x80001a,
 		transparent: true,
@@ -42,7 +54,7 @@ function init3DGlobe() {
 	scene.add(innerCore);
 
 	// 2. Ambient Particles / Energy Streams
-	const particleCount = 600;
+	const particleCount = IS_MOBILE ? 320 : 600;
 	const geometry = new THREE.BufferGeometry();
 	const positions = new Float32Array(particleCount * 3);
 
@@ -77,7 +89,7 @@ function init3DGlobe() {
 		const angle = (idx / agentNames.length) * Math.PI * 2;
 
 		// Agent Mesh Node
-		const nodeGeo = new THREE.SphereGeometry(0.12, 16, 16);
+		const nodeGeo = new THREE.SphereGeometry(0.12, 12, 12);
 		const nodeMat = new THREE.MeshBasicMaterial({ color: 0xff2a4d });
 		const nodeMesh = new THREE.Mesh(nodeGeo, nodeMat);
 
@@ -97,13 +109,38 @@ function init3DGlobe() {
 	const ambientLight = new THREE.AmbientLight(0xffffff, 0.8);
 	scene.add(ambientLight);
 
-	// Handle window resize
-	window.addEventListener("resize", onWindowResize);
-	animate();
+	// Handle window resize (debounced)
+	let rt;
+	window.addEventListener("resize", () => {
+		clearTimeout(rt);
+		rt = setTimeout(onWindowResize, 150);
+	});
+
+	// Only render while the globe is on screen and the tab is visible
+	if ("IntersectionObserver" in window) {
+		new IntersectionObserver(
+			(es) => {
+				globeVisible = es[0].isIntersecting;
+				startGlobe();
+			},
+			{ rootMargin: "80px" },
+		).observe(container);
+	}
+	document.addEventListener("visibilitychange", startGlobe);
+	startGlobe();
+}
+
+function startGlobe() {
+	const run = globeVisible && !document.hidden;
+	if (run && !globeRaf) globeRaf = requestAnimationFrame(animate);
+	if (!run && globeRaf) {
+		cancelAnimationFrame(globeRaf);
+		globeRaf = 0;
+	}
 }
 
 function animate() {
-	requestAnimationFrame(animate);
+	globeRaf = requestAnimationFrame(animate);
 
 	// Rotate main central globe
 	if (globe) {
@@ -128,9 +165,13 @@ function animate() {
 
 function onWindowResize() {
 	const container = document.getElementById("canvas-container");
-	if (!container) return;
+	if (!container || !renderer) return;
 	const width = container.clientWidth;
 	const height = container.clientHeight;
+	// mobile address-bar show/hide fires resize often: skip if nothing changed
+	if (width === globeW && height === globeH) return;
+	globeW = width;
+	globeH = height;
 
 	camera.aspect = width / height;
 	camera.updateProjectionMatrix();
@@ -138,11 +179,16 @@ function onWindowResize() {
 }
 
 // Initialize 3D Engine on load
-window.onload = function () {
-	init3DGlobe();
-	startTerminalStream();
-	initRoiCalculator();
-};
+window.addEventListener("load", function () {
+	// let the first paint + intro finish before starting the heavy WebGL work
+	const boot = () => {
+		init3DGlobe();
+		startTerminalStream();
+		initRoiCalculator();
+	};
+	if ("requestIdleCallback" in window) requestIdleCallback(boot, { timeout: 1200 });
+	else setTimeout(boot, 200);
+});
 
 // --- TERMINAL STREAM SIMULATOR ---
 function startTerminalStream() {
@@ -157,7 +203,7 @@ function startTerminalStream() {
 	];
 
 	setInterval(() => {
-		if (terminal) {
+		if (terminal && !document.hidden) {
 			const randomLog = logs[Math.floor(Math.random() * logs.length)];
 			const time = new Date().toLocaleTimeString("en-US", { hour12: false });
 			const p = document.createElement("p");
@@ -354,7 +400,7 @@ function askRag(i) {
 document.addEventListener("DOMContentLoaded", () => selectRole("planner"));
 
 // ===== CONFIG: put your real WhatsApp number (country code, digits only) =====
-const WHATSAPP_NUMBER = "923000000000"; // TODO: replace with your number
+const WHATSAPP_NUMBER = "923091491289"; // +92 309 1491289
 const WA_TEXT =
 	"Hello LAXA AI, I want to know more about your AI automation services.";
 const waLink = (t = WA_TEXT) =>
@@ -990,13 +1036,19 @@ document.addEventListener("DOMContentLoaded", () => {
 				"● " + TRAFFIC_LOGS[ti++ % TRAFFIC_LOGS.length] + " (demo)";
 		}, 2200);
 	const bar = document.getElementById("scroll-bar");
+	let sTick = false;
+	const paintBar = () => {
+		sTick = false;
+		const max = document.documentElement.scrollHeight - innerHeight;
+		bar.style.transform = "scaleX(" + (max > 0 ? Math.min(scrollY / max, 1) : 0) + ")";
+	};
 	addEventListener(
 		"scroll",
 		() => {
-			bar.style.width =
-				(scrollY / (document.documentElement.scrollHeight - innerHeight)) *
-					100 +
-				"%";
+			if (!sTick) {
+				sTick = true;
+				requestAnimationFrame(paintBar);
+			}
 		},
 		{ passive: true },
 	);
@@ -1008,12 +1060,34 @@ document.addEventListener("DOMContentLoaded", () => {
 					io.unobserve(e.target);
 				}
 			}),
-		{ threshold: 0.06 },
+		{ threshold: 0.02, rootMargin: "0px 0px -6% 0px" },
+	);
+	// pause infinite CSS animations of sections that are off screen
+	const vis = new IntersectionObserver(
+		(es) =>
+			es.forEach((e) =>
+				e.target.classList.toggle("is-offscreen", !e.isIntersecting),
+			),
+		{ rootMargin: "150px 0px" },
 	);
 	document.querySelectorAll("section:not(#hero)").forEach((s) => {
 		s.classList.add("reveal");
 		io.observe(s);
 	});
+	document.querySelectorAll("section, footer").forEach((s) => vis.observe(s));
+	// SVG (SMIL) animations: pause when off screen
+	const svgIo = new IntersectionObserver(
+		(es) =>
+			es.forEach((e) => {
+				const sv = e.target;
+				if (!sv.pauseAnimations) return;
+				e.isIntersecting ? sv.unpauseAnimations() : sv.pauseAnimations();
+			}),
+		{ rootMargin: "120px 0px" },
+	);
+	document
+		.querySelectorAll("section svg")
+		.forEach((sv) => sv.querySelector("animate, animateMotion, animateTransform") && svgIo.observe(sv));
 	const intro = document.getElementById("intro");
 	if (!intro) return document.body.classList.add("ready");
 	const msgs = [
@@ -1029,11 +1103,11 @@ document.addEventListener("DOMContentLoaded", () => {
 	});
 	const iv = setInterval(() => {
 		t.textContent = msgs[Math.min(++m, msgs.length - 1)];
-	}, 650);
+	}, 450);
 	setTimeout(() => {
 		clearInterval(iv);
 		intro.style.opacity = "0";
 		document.body.classList.add("ready");
 		setTimeout(() => intro.remove(), 700);
-	}, 2700);
+	}, 1900);
 });

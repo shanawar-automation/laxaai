@@ -84,8 +84,8 @@ section {
 
 .reveal {
     opacity: 0;
-    transform: translateY(28px);
-    transition: opacity .8s ease, transform .8s ease
+    transform: translateY(22px);
+    transition: opacity .9s cubic-bezier(.22, 1, .36, 1), transform .9s cubic-bezier(.22, 1, .36, 1)
 }
 
 .reveal.in {
@@ -201,7 +201,7 @@ body.ready #hero>* {
 }
 
 .reveal.in .grid>* {
-    animation: fadeUp .7s both
+    animation: fadeUp .8s cubic-bezier(.22, 1, .36, 1) both
 }
 
 .reveal.in .grid>*:nth-child(2) {
@@ -241,7 +241,7 @@ details[open] summary i {
 }
 
 #intro-bar {
-    transition: width 2.4s ease
+    transition: width 1.7s ease
 }
 
 @media(prefers-reduced-motion:reduce) {
@@ -375,4 +375,111 @@ html.light .wa-fab {
 html.light .bg-laxa-red *,
 html.light [class*="from-laxa-red"] * {
     color: #fff
+}
+
+/* ===== PERFORMANCE + MOBILE (smooth scrolling) ===== */
+html {
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+    -webkit-tap-highlight-color: transparent;
+}
+
+a,
+button,
+summary,
+input,
+select,
+textarea {
+    touch-action: manipulation;
+}
+
+#hero {
+    min-height: 92vh;
+    min-height: 92svh
+}
+
+/* stop infinite animations in sections that are off screen */
+.is-offscreen,
+.is-offscreen * {
+    animation-play-state: paused !important
+}
+
+/* phones + tablets: remove the GPU-heavy effects, keep the same look */
+@media (max-width: 1024px) {
+
+    .laxa-glass {
+        -webkit-backdrop-filter: none;
+        backdrop-filter: none;
+        background: rgba(12, 12, 18, 0.9)
+    }
+
+    .laxa-glass-red {
+        -webkit-backdrop-filter: none;
+        backdrop-filter: none;
+        background: rgba(20, 8, 14, 0.88);
+        box-shadow: 0 4px 18px rgba(255, 42, 77, 0.12)
+    }
+
+    .laxa-glass-red:hover {
+        box-shadow: 0 6px 22px rgba(255, 42, 77, 0.22)
+    }
+
+    /* the glow is already a soft radial gradient - extra blur + drift only costs GPU */
+    .glow-bg-red {
+        -webkit-filter: none !important;
+        filter: none !important;
+        animation: none
+    }
+
+    .text-glow-crimson {
+        animation: none
+    }
+
+    @keyframes pulseGlow {
+
+        0%,
+        100% {
+            opacity: .4
+        }
+
+        50% {
+            opacity: .9
+        }
+    }
+
+    .reveal {
+        transform: translateY(16px);
+        transition: opacity .6s cubic-bezier(.22, 1, .36, 1), transform .6s cubic-bezier(.22, 1, .36, 1)
+    }
+
+    .reveal.in .grid>* {
+        animation-duration: .45s
+    }
+
+    .reveal.in .grid>*:nth-child(n) {
+        animation-delay: 0s
+    }
+
+    .flow-line path {
+        animation: none
+    }
+}
+
+@media (max-width: 640px) {
+    footer {
+        padding-bottom: 5.5rem
+    }
+}
+
+/* water-like flow: smoother scrolling + hint compositor for revealing blocks */
+.reveal {
+    will-change: opacity, transform
+}
+
+.reveal.in {
+    will-change: auto
+}
+
+html {
+    scroll-padding-top: 84px
 }
